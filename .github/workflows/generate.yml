@@ -1,0 +1,92 @@
+name: Generate video
+
+on:
+  # من تبويب Actions: اختر "Generate video" ثم Run workflow
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "نص الفيديو (افصل المشاهد بـ ' || ')"
+        required: true
+        type: string
+      aspect:
+        description: "أبعاد الفيديو"
+        type: choice
+        options: ["16:9", "9:16", "1:1"]
+        default: "16:9"
+      voice:
+        description: "auto، أو اسم صوت edge-tts، أو none بدون صوت"
+        type: string
+        default: "auto"
+  # أو افتح Issue عنوانه يبدأ بكلمة video ونصه هو نص الفيديو (فقرة = مشهد)
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  generate:
+    # الـ Issue يعمل فقط إذا فتحه مالك المستودع، حتى لا يشغّله الغرباء
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.issue.user.login == github.repository_owner &&
+       startsWith(github.event.issue.title, 'video'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-core fonts-hosny-amiri libraqm0 libfribidi0
+
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+
+      - name: Prepare prompt
+        env:
+          INPUT_PROMPT: ${{ github.event.inputs.prompt }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          mkdir -p output
+          if [ "${{ github.event_name }}" = "issues" ]; then
+            printf '%s\n' "$ISSUE_BODY" > output/prompt.txt
+          else
+            printf '%s\n' "$INPUT_PROMPT" > output/prompt.txt
+          fi
+
+      - name: Generate video
+        env:
+          ASPECT: ${{ github.event.inputs.aspect }}
+          VOICE: ${{ github.event.inputs.voice }}
+        run: |
+          python text_to_video.py -f output/prompt.txt -o output/video.mp4 \
+            --aspect "${ASPECT:-16:9}" --voice "${VOICE:-auto}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ github.run_number }}
+          path: output/video.*
+
+      # إصدار (Release) يحمل الفيديو، فيسهل تنزيله من الجوال
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="video-${{ github.run_number }}"
+          gh release create "$TAG" output/video.mp4 output/video.srt \
+            --title "فيديو #${{ github.run_number }}" \
+            --notes "تم توليد الفيديو من النص تلقائيًا."
+          URL=$(gh release view "$TAG" --json url -q .url)
+          echo "Release: $URL" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ github.event_name }}" = "issues" ]; then
+            gh issue comment "${{ github.event.issue.number }}" \
+              --body "✅ الفيديو جاهز: $URL"
+          fi
