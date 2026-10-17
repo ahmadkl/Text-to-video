@@ -17,6 +17,11 @@ on:
         description: "auto، أو اسم صوت edge-tts، أو none بدون صوت"
         type: string
         default: "auto"
+      mode:
+        description: "auto يكتشف السيناريو تلقائيًا، أو screenplay، أو simple (نص متحرك فقط)"
+        type: choice
+        options: ["auto", "screenplay", "simple"]
+        default: "auto"
   # أو افتح Issue عنوانه يبدأ بكلمة video ونصه هو نص الفيديو (فقرة = مشهد)
   issues:
     types: [opened]
@@ -66,9 +71,10 @@ jobs:
         env:
           ASPECT: ${{ github.event.inputs.aspect }}
           VOICE: ${{ github.event.inputs.voice }}
+          MODE: ${{ github.event.inputs.mode }}
         run: |
-          python text_to_video.py -f output/prompt.txt -o output/video.mp4 \
-            --aspect "${ASPECT:-16:9}" --voice "${VOICE:-auto}"
+          python make_video.py -f output/prompt.txt -o output/video.mp4 \
+            --aspect "${ASPECT:-16:9}" --voice "${VOICE:-auto}" --mode "${MODE:-auto}"
 
       - uses: actions/upload-artifact@v4
         with:
@@ -89,4 +95,24 @@ jobs:
           if [ "${{ github.event_name }}" = "issues" ]; then
             gh issue comment "${{ github.event.issue.number }}" \
               --body "✅ الفيديو جاهز: $URL"
+          fi
+
+      # إرسال الفيديو إلى تيليجرام (اختياري: يعمل فقط إذا أضفت السرّين في Settings ← Secrets)
+      - name: Send to Telegram
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT" ]; then
+            echo "Telegram secrets not set; skipping."
+            exit 0
+          fi
+          SIZE=$(stat -c %s output/video.mp4)
+          if [ "$SIZE" -gt 49000000 ]; then
+            curl -sS -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+              -d chat_id="$TG_CHAT" -d text="الفيديو جاهز لكنه أكبر من 50MB، حمّله من Releases."
+          else
+            curl -sS -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendVideo" \
+              -F chat_id="$TG_CHAT" -F video=@output/video.mp4 -F supports_streaming=true \
+              -F caption="الفيديو جاهز"
           fi
