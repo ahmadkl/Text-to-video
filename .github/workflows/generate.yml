@@ -17,6 +17,21 @@ on:
         description: "auto، أو اسم صوت edge-tts، أو none بدون صوت"
         type: string
         default: "auto"
+      style:
+        description: "cinematic: صور واقعية/أنمي بالذكاء الاصطناعي، cartoon: شخصيات مرسومة بالكود"
+        type: choice
+        options: ["cinematic", "cartoon"]
+        default: "cinematic"
+      look:
+        description: "شكل الصور في الوضع السينمائي"
+        type: choice
+        options: ["realistic", "anime", "cartoon"]
+        default: "realistic"
+      images:
+        description: "مزود الصور: auto يستخدم gemini إن وُجد مفتاحه وإلا pollinations المجاني"
+        type: choice
+        options: ["auto", "pollinations", "gemini"]
+        default: "auto"
       mode:
         description: "auto يكتشف السيناريو تلقائيًا، أو screenplay، أو simple (نص متحرك فقط)"
         type: choice
@@ -72,14 +87,26 @@ jobs:
           ASPECT: ${{ github.event.inputs.aspect }}
           VOICE: ${{ github.event.inputs.voice }}
           MODE: ${{ github.event.inputs.mode }}
+          STYLE: ${{ github.event.inputs.style }}
+          LOOK: ${{ github.event.inputs.look }}
+          IMAGES: ${{ github.event.inputs.images }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          POLLINATIONS_TOKEN: ${{ secrets.POLLINATIONS_TOKEN }}
         run: |
+          IMG="${IMAGES:-auto}"
+          if [ "$IMG" = "auto" ]; then
+            if [ -n "$GEMINI_API_KEY" ]; then IMG=gemini; else IMG=pollinations; fi
+          fi
           python make_video.py -f output/prompt.txt -o output/video.mp4 \
-            --aspect "${ASPECT:-16:9}" --voice "${VOICE:-auto}" --mode "${MODE:-auto}"
+            --aspect "${ASPECT:-16:9}" --voice "${VOICE:-auto}" --mode "${MODE:-auto}" \
+            --style "${STYLE:-cinematic}" --look "${LOOK:-realistic}" --images "$IMG"
 
       - uses: actions/upload-artifact@v4
         with:
           name: video-${{ github.run_number }}
-          path: output/video.*
+          path: |
+            output/video.*
+            output/video_prompts.txt
 
       # إصدار (Release) يحمل الفيديو، فيسهل تنزيله من الجوال
       - name: Publish release

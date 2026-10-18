@@ -869,6 +869,13 @@ def main() -> None:
     p.add_argument("--min-beat", type=float, default=2.6)
     p.add_argument("--max-chars", type=int, default=160)
     p.add_argument("--seed", type=int, default=None)
+    p.add_argument("--style", choices=["cinematic", "cartoon"], default="cinematic",
+                   help="cinematic: صور واقعية/أنمي مولّدة بالذكاء الاصطناعي، cartoon: شخصيات مرسومة بالكود")
+    p.add_argument("--look", choices=["realistic", "anime", "cartoon"], default="realistic",
+                   help="شكل الصور في الوضع السينمائي")
+    p.add_argument("--images", choices=["pollinations", "gemini", "placeholder"], default="pollinations",
+                   help="مزود الصور (gemini يحتاج GEMINI_API_KEY)")
+    p.add_argument("--narrator", action="store_true", help="الوضع السينمائي: يقرأ راوٍ أوصاف الحركة")
     args = p.parse_args()
 
     raw = Path(args.file).read_text(encoding="utf-8") if args.file else args.text
@@ -876,7 +883,12 @@ def main() -> None:
     if mode == "auto":
         mode = "screenplay" if looks_like_screenplay(raw or "") else "simple"
     log(f"الوضع: {mode}")
-    if mode == "screenplay":
+    if mode == "screenplay" and args.style == "cinematic":
+        import cinematic
+        if args.no_narrator:
+            args.narrator = False
+        cinematic.generate(args)
+    elif mode == "screenplay":
         generate_screenplay(args)
     else:
         ns = types.SimpleNamespace(file=args.file, text=args.text, output=args.output, aspect=args.aspect,
