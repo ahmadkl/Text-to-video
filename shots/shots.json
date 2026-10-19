@@ -1,0 +1,912 @@
+{
+ "aspect": "9:16",
+ "style": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin",
+ "shots": [
+  {
+   "id": 1,
+   "scene": 1,
+   "slug": "خارجي – مساء",
+   "names": [],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in the evening, golden light.\nStaging: Establishing wide shot, slow gentle camera movement, natural ambient life.\nAction from the script (Arabic): مجموعة منازل متقاربة من بعضها متتالية على صفين بينها طريق بعرض ٥ امتار المنزل الثاني على اليمين منزل عبد الله المنزل الذي بعده منزل علي المنزل على اليمين منزل قريب عبد الله و شريكه في المؤامرة على علي المنزل الذي قبله منزل ابو عبدو\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 2,
+   "scene": 2,
+   "slug": "خارجي – نهار",
+   "names": [
+    "عبد الله",
+    "علي",
+    "عامر"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "هادا جارنا الجديد مو اهل هيدي المدينة شو جابو لهون ناقصنا نحنا جار غريب عننا",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\n- Amer: a Syrian man in his 40s, short black hair, a trimmed mustache, olive skin, wearing a white shirt\nStaging: over-the-shoulder shot of Abdullah speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nAction from the script (Arabic): مجموعة من الاشخاص جالسين في ارض فارغة من المنازل، هم عبد الله، و عامر قريبه و ابو عامر خال عبد الله، يتحدثون عن علي\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"هادا جارنا الجديد مو اهل هيدي المدينة شو جابو لهون ناقصنا نحنا جار غريب عننا\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 3,
+   "scene": 2,
+   "slug": "خارجي – نهار",
+   "names": [
+    "عامر"
+   ],
+   "lines": [
+    {
+     "speaker": "عامر",
+     "text": "حسب ما فهمت هادا وضعو المادي صعب شوي و ما عندو يشتري بغير محل",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Amer: a Syrian man in his 40s, short black hair, a trimmed mustache, olive skin, wearing a white shirt\nStaging: medium close-up of Amer speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAmer (an adult man's voice): \"حسب ما فهمت هادا وضعو المادي صعب شوي و ما عندو يشتري بغير محل\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 4,
+   "scene": 2,
+   "slug": "خارجي – نهار",
+   "names": [
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "سألتو كيف اذا رح يترك طريق او لا",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: slightly low-angle medium shot of Abdullah speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"سألتو كيف اذا رح يترك طريق او لا\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 5,
+   "scene": 2,
+   "slug": "خارجي – نهار",
+   "names": [
+    "عامر"
+   ],
+   "lines": [
+    {
+     "speaker": "عامر",
+     "text": "لا ما سألتو بس اكير ما رح يترك لانو ما رح يستفيد منو",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Amer: a Syrian man in his 40s, short black hair, a trimmed mustache, olive skin, wearing a white shirt\nStaging: medium two-shot of Amer speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAmer (an adult man's voice): \"لا ما سألتو بس اكير ما رح يترك لانو ما رح يستفيد منو\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 6,
+   "scene": 2,
+   "slug": "خارجي – نهار",
+   "names": [
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "بعد لحظات ، منحكي معو و منشوف",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: over-the-shoulder shot of Abdullah speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"بعد لحظات ، منحكي معو و منشوف\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 7,
+   "scene": 2,
+   "slug": "خارجي – نهار",
+   "names": [
+    "ابو عامر",
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو عامر",
+     "text": "يعني ارض طويلة عريضة كلها كم متر ليش ما يتركهن",
+     "paren": ""
+    },
+    {
+     "speaker": "عبد الله",
+     "text": "مو بكيفو لازم يترك",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abu Amer: a Syrian man in his 60s, grey hair, deeply wrinkled weathered face, a grey mustache, wearing a red and white checkered keffiyeh and a plain navy shirt\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: medium close-up; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Amer (a deep, slightly raspy elderly man's voice): \"يعني ارض طويلة عريضة كلها كم متر ليش ما يتركهن\"\nAbdullah (an adult man's voice): \"مو بكيفو لازم يترك\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 8,
+   "scene": 2,
+   "slug": "خارجي – نهار",
+   "names": [],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nStaging: Establishing wide shot, slow gentle camera movement, natural ambient life.\nAction from the script (Arabic): بعد دقائق اتى علي و اخاه ليقوم بسقية اثاث المنزل بالماء\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 9,
+   "scene": 3,
+   "slug": "خارجي – اثاث عمارة علي – نهار",
+   "names": [
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "علي",
+     "text": "اسقي من هون صب عليها مي صب",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: medium two-shot of Ali speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAli (an adult man's voice): \"اسقي من هون صب عليها مي صب\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 10,
+   "scene": 3,
+   "slug": "خارجي – اثاث عمارة علي – نهار",
+   "names": [
+    "عبد الله"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: Medium wide shot, the characters move naturally as described, subtle handheld camera.\nAction from the script (Arabic): و يقف بجانبه ليشاهد ماذا يفعل بعد الانتهاء و هو ذاهب ناداه عبد الله جار تعال قليلا\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 11,
+   "scene": 4,
+   "slug": "خارجي – المكان بجانب منزل علي – نهار",
+   "names": [
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "علي",
+     "text": "السلام عليكم ورحمه الله وبركاته",
+     "paren": ""
+    },
+    {
+     "speaker": "الجالسون",
+     "text": "و عليكم السلام عليكم ورحمه الله وبركاته",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: medium close-up; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAli (an adult man's voice): \"السلام عليكم ورحمه الله وبركاته\"\nthe men sitting together: \"و عليكم السلام عليكم ورحمه الله وبركاته\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 12,
+   "scene": 4,
+   "slug": "خارجي – المكان بجانب منزل علي – نهار",
+   "names": [
+    "عبد الله",
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "اين ستضع باب منزلك",
+     "paren": ""
+    },
+    {
+     "speaker": "علي",
+     "text": "على حدود ارضي هيدي المنطقة ما رح استفيد لو تركتها",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: slightly low-angle medium shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"اين ستضع باب منزلك\"\nAli (an adult man's voice): \"على حدود ارضي هيدي المنطقة ما رح استفيد لو تركتها\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 13,
+   "scene": 4,
+   "slug": "خارجي – المكان بجانب منزل علي – نهار",
+   "names": [
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "لا ما بصير بتصير كتير ع باب داري",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: medium two-shot of Abdullah speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"لا ما بصير بتصير كتير ع باب داري\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 14,
+   "scene": 4,
+   "slug": "خارجي – المكان بجانب منزل علي – نهار",
+   "names": [
+    "علي",
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "علي",
+     "text": "وشو ذنبي كنت خط باب دارك بعيد عني",
+     "paren": ""
+    },
+    {
+     "speaker": "عبد الله",
+     "text": "بسكرلك الطريق",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: over-the-shoulder shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAli (an adult man's voice): \"وشو ذنبي كنت خط باب دارك بعيد عني\"\nAbdullah (an adult man's voice): \"بسكرلك الطريق\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 15,
+   "scene": 4,
+   "slug": "خارجي – المكان بجانب منزل علي – نهار",
+   "names": [
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "علي",
+     "text": "اذا كان ملكك سكروا",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: medium close-up of Ali speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAli (an adult man's voice): \"اذا كان ملكك سكروا\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 16,
+   "scene": 4,
+   "slug": "خارجي – المكان بجانب منزل علي – نهار",
+   "names": [],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, in soft daylight.\nStaging: Establishing wide shot, slow gentle camera movement, natural ambient life.\nAction from the script (Arabic): و يذهب\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 17,
+   "scene": 5,
+   "slug": "داخلي – القبو الذي يسكن فيه علي – ليل",
+   "names": [
+    "زوجة علي",
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "زوجة علي",
+     "text": "شلون الشغل",
+     "paren": ""
+    },
+    {
+     "speaker": "علي",
+     "text": "الحمد لله تمام شهر زمان بتكون جاهزة",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a basement, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- wife of Ali: a Syrian woman in her 30s wearing a dusty pink hijab and modest long clothing, expressive tired eyes\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: medium two-shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nwife of Ali (a calm adult woman's voice): \"شلون الشغل\"\nAli (an adult man's voice): \"الحمد لله تمام شهر زمان بتكون جاهزة\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 18,
+   "scene": 5,
+   "slug": "داخلي – القبو الذي يسكن فيه علي – ليل",
+   "names": [
+    "زوجته",
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "زوجته",
+     "text": "ان شاء الله",
+     "paren": ""
+    },
+    {
+     "speaker": "علي",
+     "text": "انا رايح اسهر عند اهلي بدك شي",
+     "paren": ""
+    },
+    {
+     "speaker": "زوجته",
+     "text": "لا",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a basement, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- his wife: a Syrian woman in her 30s wearing a cream hijab and modest long clothing, expressive tired eyes\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: over-the-shoulder shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nhis wife (a calm adult woman's voice): \"ان شاء الله\"\nAli (an adult man's voice): \"انا رايح اسهر عند اهلي بدك شي\"\nhis wife (a calm adult woman's voice): \"لا\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 19,
+   "scene": 6,
+   "slug": "داخلي – منزل عبد الله – ليل",
+   "names": [
+    "عبد الله",
+    "زوجته"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "كئيبا تسأله",
+     "paren": ""
+    },
+    {
+     "speaker": "زوجته",
+     "text": "اشو صاير معك",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a house, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\n- his wife: a Syrian woman in her 30s wearing a cream hijab and modest long clothing, expressive tired eyes\nStaging: medium close-up; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"كئيبا تسأله\"\nhis wife (a calm adult woman's voice): \"اشو صاير معك\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 20,
+   "scene": 6,
+   "slug": "داخلي – منزل عبد الله – ليل",
+   "names": [
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "هادا جارنا الجديد ما بدو يبعد باب الدار تبعو و رح يحط باب دارو هون",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a house, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: slightly low-angle medium shot of Abdullah speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"هادا جارنا الجديد ما بدو يبعد باب الدار تبعو و رح يحط باب دارو هون\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 21,
+   "scene": 6,
+   "slug": "داخلي – منزل عبد الله – ليل",
+   "names": [
+    "عبد الله",
+    "زوجته"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "و مافيني امنعو لانو حقو",
+     "paren": ""
+    },
+    {
+     "speaker": "زوجته",
+     "text": "ما حكيت معو",
+     "paren": ""
+    },
+    {
+     "speaker": "عبد الله",
+     "text": "حكيت معو بس هيك قال",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a house, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\n- his wife: a Syrian woman in her 30s wearing a cream hijab and modest long clothing, expressive tired eyes\nStaging: medium two-shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"و مافيني امنعو لانو حقو\"\nhis wife (a calm adult woman's voice): \"ما حكيت معو\"\nAbdullah (an adult man's voice): \"حكيت معو بس هيك قال\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 22,
+   "scene": 6,
+   "slug": "داخلي – منزل عبد الله – ليل",
+   "names": [
+    "زوجته"
+   ],
+   "lines": [
+    {
+     "speaker": "زوجته",
+     "text": "رجاع احكي معو",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a house, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- his wife: a Syrian woman in her 30s wearing a cream hijab and modest long clothing, expressive tired eyes\nStaging: over-the-shoulder shot of his wife speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nhis wife (a calm adult woman's voice): \"رجاع احكي معو\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 23,
+   "scene": 7,
+   "slug": "خارجي – نهار",
+   "names": [
+    "عبد الله",
+    "ابو علي",
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "السلام عليكم ورحمه الله وبركاته",
+     "paren": ""
+    },
+    {
+     "speaker": "ابو علي",
+     "text": "وعليكم السلام ورحمه الله وبركاته",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\n- Abu Ali: a Syrian man in his 60s, grey hair, deeply wrinkled weathered face, a grey mustache, wearing a white knitted skullcap and a grey traditional shirt\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: medium close-up; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nAction from the script (Arabic): يذهب عبد الله الى والد علي و يخبره بأن علي صرخ عليهم و انه يجب ان يفتح الطريق بحجة انه اجمل لمنزله\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"السلام عليكم ورحمه الله وبركاته\"\nAbu Ali (a deep, slightly raspy elderly man's voice): \"وعليكم السلام ورحمه الله وبركاته\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 24,
+   "scene": 7,
+   "slug": "خارجي – نهار",
+   "names": [
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "مبارح علي عصب علينا و عيط ليش قلنالو يفتح الطريق من ارضو",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: slightly low-angle medium shot of Abdullah speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"مبارح علي عصب علينا و عيط ليش قلنالو يفتح الطريق من ارضو\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 25,
+   "scene": 7,
+   "slug": "خارجي – نهار",
+   "names": [
+    "ابو علي",
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو علي",
+     "text": "انا بحكي بس يجي",
+     "paren": ""
+    },
+    {
+     "speaker": "عبد الله",
+     "text": "نحنا عم نقلو يفتح الطريق لمصلحتو افضل لدارو",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abu Ali: a Syrian man in his 60s, grey hair, deeply wrinkled weathered face, a grey mustache, wearing a white knitted skullcap and a grey traditional shirt\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: medium two-shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Ali (a deep, slightly raspy elderly man's voice): \"انا بحكي بس يجي\"\nAbdullah (an adult man's voice): \"نحنا عم نقلو يفتح الطريق لمصلحتو افضل لدارو\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 26,
+   "scene": 7,
+   "slug": "خارجي – نهار",
+   "names": [
+    "ابو علي"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو علي",
+     "text": "و ليش ما اقتنع",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abu Ali: a Syrian man in his 60s, grey hair, deeply wrinkled weathered face, a grey mustache, wearing a white knitted skullcap and a grey traditional shirt\nStaging: over-the-shoulder shot of Abu Ali speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Ali (a deep, slightly raspy elderly man's voice): \"و ليش ما اقتنع\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 27,
+   "scene": 7,
+   "slug": "خارجي – نهار",
+   "names": [
+    "عبد الله"
+   ],
+   "lines": [
+    {
+     "speaker": "عبد الله",
+     "text": "سألو انت مساء جاء الى والده و حدثه والده عن الطريق",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Abdullah: a Syrian man in his 30s, short dark brown hair, light stubble, olive skin, wearing a grey shirt\nStaging: medium close-up of Abdullah speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbdullah (an adult man's voice): \"سألو انت مساء جاء الى والده و حدثه والده عن الطريق\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 28,
+   "scene": 8,
+   "slug": "داخلي – منزل والد علي – ليل",
+   "names": [
+    "ابو علي",
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو علي",
+     "text": "ليش معصب عالعالم مبارح و معيط عليهن",
+     "paren": ""
+    },
+    {
+     "speaker": "علي",
+     "text": "انا عصبت عليهن مين هدول العالم",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a house, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Ali: a Syrian man in his 60s, grey hair, deeply wrinkled weathered face, a grey mustache, wearing a white knitted skullcap and a grey traditional shirt\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: slightly low-angle medium shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Ali (a deep, slightly raspy elderly man's voice): \"ليش معصب عالعالم مبارح و معيط عليهن\"\nAli (an adult man's voice): \"انا عصبت عليهن مين هدول العالم\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 29,
+   "scene": 8,
+   "slug": "داخلي – منزل والد علي – ليل",
+   "names": [
+    "ابو علي",
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو علي",
+     "text": "جيرانك بالعمارة",
+     "paren": ""
+    },
+    {
+     "speaker": "علي",
+     "text": "عم يطالبوني اترك طريق وانا ما بستفيد منو بشي منشان مصلحتن",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a house, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Ali: a Syrian man in his 60s, grey hair, deeply wrinkled weathered face, a grey mustache, wearing a white knitted skullcap and a grey traditional shirt\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: medium two-shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Ali (a deep, slightly raspy elderly man's voice): \"جيرانك بالعمارة\"\nAli (an adult man's voice): \"عم يطالبوني اترك طريق وانا ما بستفيد منو بشي منشان مصلحتن\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 30,
+   "scene": 8,
+   "slug": "داخلي – منزل والد علي – ليل",
+   "names": [
+    "ابو علي"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو علي",
+     "text": "لأ اليوم اجا لعندي جارك وقلي انو اذا تركت افضل لدارك",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a house, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Ali: a Syrian man in his 60s, grey hair, deeply wrinkled weathered face, a grey mustache, wearing a white knitted skullcap and a grey traditional shirt\nStaging: over-the-shoulder shot of Abu Ali speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Ali (a deep, slightly raspy elderly man's voice): \"لأ اليوم اجا لعندي جارك وقلي انو اذا تركت افضل لدارك\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 31,
+   "scene": 8,
+   "slug": "داخلي – منزل والد علي – ليل",
+   "names": [
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "علي",
+     "text": "مزال جاي لعندك مارح اترك",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: interior, inside a house, modest Arab home, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: medium close-up of Ali speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAli (an adult man's voice): \"مزال جاي لعندك مارح اترك\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 32,
+   "scene": 9,
+   "slug": "خارجي – نهار",
+   "names": [
+    "معلم العمار",
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "معلم العمار",
+     "text": "ليش في طريق للآخر",
+     "paren": ""
+    },
+    {
+     "speaker": "علي",
+     "text": "لا مافي",
+     "paren": ""
+    },
+    {
+     "speaker": "معلم العمار",
+     "text": "مزال مافي ليش بدك تترك",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- the construction foreman: a Syrian man in his 20s, thinning dark hair, light stubble, olive skin, wearing a grey shirt\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: slightly low-angle medium shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nAction from the script (Arabic): يبني علي منزل منزله في اليوم التالي ذهب علي الى ارضه و كان معلم العمار يعمل مع عماله و سأله عن رأيه في الطريق فقال له\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nthe construction foreman (an adult man's voice): \"ليش في طريق للآخر\"\nAli (an adult man's voice): \"لا مافي\"\nthe construction foreman (an adult man's voice): \"مزال مافي ليش بدك تترك\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 33,
+   "scene": 9,
+   "slug": "خارجي – نهار",
+   "names": [
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "علي",
+     "text": "الجيران بدهن يجبروني على الطريق بحجة انو افضل الي",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: medium two-shot of Ali speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAli (an adult man's voice): \"الجيران بدهن يجبروني على الطريق بحجة انو افضل الي\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 34,
+   "scene": 9,
+   "slug": "خارجي – نهار",
+   "names": [
+    "معلم العمار"
+   ],
+   "lines": [
+    {
+     "speaker": "معلم العمار",
+     "text": "اسأل صاحب الارض بالاول اذا في طريق او لا",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- the construction foreman: a Syrian man in his 20s, thinning dark hair, light stubble, olive skin, wearing a grey shirt\nStaging: over-the-shoulder shot of the construction foreman speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nthe construction foreman (an adult man's voice): \"اسأل صاحب الارض بالاول اذا في طريق او لا\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 35,
+   "scene": 10,
+   "slug": "خارجي – نهار",
+   "names": [
+    "علي",
+    "صاحب الارض"
+   ],
+   "lines": [
+    {
+     "speaker": "علي",
+     "text": "السلام عليكم ورحمه الله وبركاته",
+     "paren": ""
+    },
+    {
+     "speaker": "صاحب الارض",
+     "text": "وعليكم السلام ورحمه الله وبركاته",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\n- the landowner: a Syrian man in his 30s, wavy black hair, light stubble, olive skin, wearing a navy blue shirt\nStaging: medium close-up; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nAction from the script (Arabic): يذهب علي الى صاحب الارض حيث انه يسكن قريب من المكان\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAli (an adult man's voice): \"السلام عليكم ورحمه الله وبركاته\"\nthe landowner (an adult man's voice): \"وعليكم السلام ورحمه الله وبركاته\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 36,
+   "scene": 10,
+   "slug": "خارجي – نهار",
+   "names": [
+    "علي",
+    "صاحب الارض"
+   ],
+   "lines": [
+    {
+     "speaker": "علي",
+     "text": "حجي بدي اسألك منشان الطريق",
+     "paren": ""
+    },
+    {
+     "speaker": "صاحب الارض",
+     "text": "خير شو صاير",
+     "paren": ""
+    },
+    {
+     "speaker": "علي",
+     "text": "عم يقولولي انو الطريق للآخر",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\n- the landowner: a Syrian man in his 30s, wavy black hair, light stubble, olive skin, wearing a navy blue shirt\nStaging: slightly low-angle medium shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAli (an adult man's voice): \"حجي بدي اسألك منشان الطريق\"\nthe landowner (an adult man's voice): \"خير شو صاير\"\nAli (an adult man's voice): \"عم يقولولي انو الطريق للآخر\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 37,
+   "scene": 10,
+   "slug": "خارجي – نهار",
+   "names": [
+    "صاحب الارض"
+   ],
+   "lines": [
+    {
+     "speaker": "صاحب الارض",
+     "text": "لا الطريق اذا بدك انت بتفتحو او بتسكروا من عندك لانو بكل الاحوال مسكر بالجبل",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- the landowner: a Syrian man in his 30s, wavy black hair, light stubble, olive skin, wearing a navy blue shirt\nStaging: medium two-shot of the landowner speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nthe landowner (an adult man's voice): \"لا الطريق اذا بدك انت بتفتحو او بتسكروا من عندك لانو بكل الاحوال مسكر بالجبل\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 38,
+   "scene": 10,
+   "slug": "خارجي – نهار",
+   "names": [
+    "صاحب الارض",
+    "علي"
+   ],
+   "lines": [
+    {
+     "speaker": "صاحب الارض",
+     "text": "بعدك",
+     "paren": ""
+    },
+    {
+     "speaker": "علي",
+     "text": "طيب تمام بس بعد اذنك خبر الجيران هاد الكلام",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a Syrian village with old stone houses, in soft daylight.\nCharacters (keep their look identical in every shot):\n- the landowner: a Syrian man in his 30s, wavy black hair, light stubble, olive skin, wearing a navy blue shirt\n- Ali: a Syrian man in his 40s, wavy black hair, a short dark beard, olive skin, wearing a dark red shirt\nStaging: over-the-shoulder shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nthe landowner (an adult man's voice): \"بعدك\"\nAli (an adult man's voice): \"طيب تمام بس بعد اذنك خبر الجيران هاد الكلام\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 39,
+   "scene": 11,
+   "slug": "خارجي – يبني علي منزله الجيران مجتمعين – ليل",
+   "names": [
+    "ابو محمد",
+    "ابو سعيد",
+    "ابو عمر"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو محمد",
+     "text": "هادا جارنا علي ما رح يترك طريق و اذا ما ترك رح يخنق الحارة",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\n- Abu Saeed: a Syrian man in his 60s, light blond hair, fair skin, a grey mustache, wearing no headwear and a dark jacket over a beige shirt\n- Abu Omar: a Syrian man in his 30s, long dark hair tied back, a full dark beard, wearing a grey shirt\nStaging: medium close-up of Abu Mohammad speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nAction from the script (Arabic): ابو محمد رجل في الخمسين من عمره ملتحي و ينادوه شيخ بحكم انه رجل ملتحي يعمل مدرس في مدرسة ابو عمر ابن خال ابو محمد شاب في الثلاثين من عمره ملتحي و شعر طويل و ليس له اي املاك في المنطقة ابو سعيد الجار الثالث الاشقر المكروه بينهم لكنهم ينادون …\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Mohammad (an adult man's voice): \"هادا جارنا علي ما رح يترك طريق و اذا ما ترك رح يخنق الحارة\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 40,
+   "scene": 11,
+   "slug": "خارجي – يبني علي منزله الجيران مجتمعين – ليل",
+   "names": [
+    "ابو سعيد",
+    "ابو محمد"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو سعيد",
+     "text": "طيب قلو انك رح تقطع عليه الطريق",
+     "paren": ""
+    },
+    {
+     "speaker": "ابو محمد",
+     "text": "ما بصير شو شايفنا ولاد صغار",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Saeed: a Syrian man in his 60s, light blond hair, fair skin, a grey mustache, wearing no headwear and a dark jacket over a beige shirt\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\nStaging: slightly low-angle medium shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Saeed (a deep, slightly raspy elderly man's voice): \"طيب قلو انك رح تقطع عليه الطريق\"\nAbu Mohammad (an adult man's voice): \"ما بصير شو شايفنا ولاد صغار\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 41,
+   "scene": 11,
+   "slug": "خارجي – يبني علي منزله الجيران مجتمعين – ليل",
+   "names": [
+    "ابو عمر"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو عمر",
+     "text": "لسا في شغلة كان عم يقلي انو رح يشتري هيدي الارضية لأخوه",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Omar: a Syrian man in his 30s, long dark hair tied back, a full dark beard, wearing a grey shirt\nStaging: medium two-shot of Abu Omar speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Omar (an adult man's voice): \"لسا في شغلة كان عم يقلي انو رح يشتري هيدي الارضية لأخوه\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 42,
+   "scene": 11,
+   "slug": "خارجي – يبني علي منزله الجيران مجتمعين – ليل",
+   "names": [
+    "ابو محمد"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو محمد",
+     "text": "معناها انا رح بيع لانو اذا سكن اخوه فيها انا ما بقدر اسكن لانو بيتي",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\nStaging: over-the-shoulder shot of Abu Mohammad speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Mohammad (an adult man's voice): \"معناها انا رح بيع لانو اذا سكن اخوه فيها انا ما بقدر اسكن لانو بيتي\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 43,
+   "scene": 11,
+   "slug": "خارجي – يبني علي منزله الجيران مجتمعين – ليل",
+   "names": [
+    "ابو محمد"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو محمد",
+     "text": "مكشوف",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\nStaging: medium close-up of Abu Mohammad speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Mohammad (an adult man's voice): \"مكشوف\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 44,
+   "scene": 11,
+   "slug": "خارجي – يبني علي منزله الجيران مجتمعين – ليل",
+   "names": [
+    "ابو سعيد"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو سعيد",
+     "text": "اي لوقتا بتكون كملت بيتك و غير بيتك اعلا من بيت يعني انت كاشفو",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Saeed: a Syrian man in his 60s, light blond hair, fair skin, a grey mustache, wearing no headwear and a dark jacket over a beige shirt\nStaging: slightly low-angle medium shot of Abu Saeed speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Saeed (a deep, slightly raspy elderly man's voice): \"اي لوقتا بتكون كملت بيتك و غير بيتك اعلا من بيت يعني انت كاشفو\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 45,
+   "scene": 11,
+   "slug": "خارجي – يبني علي منزله الجيران مجتمعين – ليل",
+   "names": [
+    "ابو محمد",
+    "ابو سعيد"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو محمد",
+     "text": "اي خلي يستروا حالن بوقتا",
+     "paren": ""
+    },
+    {
+     "speaker": "ابو سعيد",
+     "text": "يعني هنن يستروا حالن و انتو ليش بتعملوا متلن",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\n- Abu Saeed: a Syrian man in his 60s, light blond hair, fair skin, a grey mustache, wearing no headwear and a dark jacket over a beige shirt\nStaging: medium two-shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Mohammad (an adult man's voice): \"اي خلي يستروا حالن بوقتا\"\nAbu Saeed (a deep, slightly raspy elderly man's voice): \"يعني هنن يستروا حالن و انتو ليش بتعملوا متلن\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 46,
+   "scene": 11,
+   "slug": "خارجي – يبني علي منزله الجيران مجتمعين – ليل",
+   "names": [
+    "ابو محمد"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو محمد",
+     "text": "يصمت و يظهر على الغضب و ينصر الى ابو عمر نظرة تدل على المكيدة",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\nStaging: over-the-shoulder shot of Abu Mohammad speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Mohammad (an adult man's voice): \"يصمت و يظهر على الغضب و ينصر الى ابو عمر نظرة تدل على المكيدة\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 47,
+   "scene": 12,
+   "slug": "خارجي – امام منزل ابو محمد – ليل",
+   "names": [
+    "ابو محمد",
+    "ابو عمر"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو محمد",
+     "text": "لازم ما نخلي اخوه يشتري هون",
+     "paren": ""
+    },
+    {
+     "speaker": "ابو عمر",
+     "text": "طيب شلون",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\n- Abu Omar: a Syrian man in his 30s, long dark hair tied back, a full dark beard, wearing a grey shirt\nStaging: medium close-up; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Mohammad (an adult man's voice): \"لازم ما نخلي اخوه يشتري هون\"\nAbu Omar (an adult man's voice): \"طيب شلون\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 48,
+   "scene": 12,
+   "slug": "خارجي – امام منزل ابو محمد – ليل",
+   "names": [
+    "ابو محمد",
+    "ابو عمر"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو محمد",
+     "text": "شتريها انت ، منضل انا وانت قرايب",
+     "paren": ""
+    },
+    {
+     "speaker": "ابو عمر",
+     "text": "مكشوفة من كل الاطراف",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\n- Abu Omar: a Syrian man in his 30s, long dark hair tied back, a full dark beard, wearing a grey shirt\nStaging: slightly low-angle medium shot; the two characters face each other while talking, natural hand gestures, subtle handheld camera, realistic reactions while the other speaks.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Mohammad (an adult man's voice): \"شتريها انت ، منضل انا وانت قرايب\"\nAbu Omar (an adult man's voice): \"مكشوفة من كل الاطراف\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 49,
+   "scene": 12,
+   "slug": "خارجي – امام منزل ابو محمد – ليل",
+   "names": [
+    "ابو محمد"
+   ],
+   "lines": [
+    {
+     "speaker": "ابو محمد",
+     "text": "بوقتا انا بلاقيلك حل لا تخاف",
+     "paren": ""
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nCharacters (keep their look identical in every shot):\n- Abu Mohammad: a Syrian man in his 50s, short dark brown hair, a full dark beard, wearing a white knitted skullcap and a brown wool vest over a white shirt\nStaging: medium two-shot of Abu Mohammad speaking to someone just off-camera, expressive face, natural small gestures, subtle handheld camera.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nAbu Mohammad (an adult man's voice): \"بوقتا انا بلاقيلك حل لا تخاف\"\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 50,
+   "scene": 12,
+   "slug": "خارجي – امام منزل ابو محمد – ليل",
+   "names": [],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nVertical 9:16 frame.\nSetting: exterior, a house in a Syrian village, at night, lit by street lamps.\nStaging: Establishing wide shot, slow gentle camera movement, natural ambient life.\nAction from the script (Arabic): يذهب ابو عمر و يبدأ التفكير في الكلام الذي قاله ابو محمد\nAudio: natural ambient sound of the place, no music. No subtitles, no captions, no on-screen text, no logos."
+  }
+ ]
+}

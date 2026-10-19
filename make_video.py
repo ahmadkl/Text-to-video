@@ -27,6 +27,7 @@ import array
 import asyncio
 import hashlib
 import math
+import os
 import random
 import re
 import subprocess
@@ -69,7 +70,7 @@ FEMALE_NAMES = {"سارة", "مريم", "فاطمة", "ليلى", "سلمى", "�
                 "لمى", "جود", "ميس", "رولا", "سناء", "هالة", "منى", "ديما", "رهف", "شهد", "أم",
                 "mary", "sara", "sarah", "anna", "emma", "lily", "laila", "mona", "nora"}
 MALE_TA = {"حمزة", "معاوية", "أسامة", "طلحة", "عكرمة", "قتيبة", "عبيدة", "أبو"}
-OLD_WORDS = ("أبو", "الحاج", "العم", "الشيخ", "جد", "جدي", "حاج")
+OLD_WORDS = ("أبو", "ابو", "الحاج", "العم", "الشيخ", "جد", "جدي", "حاج")
 
 SLUG_RE = re.compile(r"^(خارجي|داخلي|خارجى|داخلى|EXT\b|INT\b)", re.I)
 TITLE_RE = re.compile(r"^(المشهد|مشهد|scene|الفصل|chapter|الحلقة|episode)\b", re.I)
@@ -218,48 +219,53 @@ def parse_screenplay(raw: str, max_chars: int) -> tuple[list[dict], dict]:
     return result, decl
 
 
-def build_cast(beats: list[dict], decl: dict) -> list[dict]:
-    """يستخرج الشخصيات بترتيب ظهورها."""
-    speakers = []
+def build_cast(beats: list[dict], decl: dict, limit: int = 12) -> list[dict]:
+    """يستخرج الشخصيات: المعلنة أولًا، ثم المتحدثون الأكثر كلامًا، ثم الصامتون المذكورون في المشاهد."""
+    counts: dict[str, int] = {}
     for b in beats:
-        if b["kind"] == "dialogue" and b["speaker"] not in CROWD_NAMES and b["speaker"] not in speakers:
-            speakers.append(b["speaker"])
+        if b["kind"] == "dialogue" and b["speaker"] not in CROWD_NAMES:
+            counts[b["speaker"]] = counts.get(b["speaker"], 0) + 1
+    speakers = sorted(counts, key=lambda n: -counts[n])
     known = list(dict.fromkeys(list(decl) + speakers))
     order: list[str] = list(decl)
+    for n in speakers:
+        if n not in order:
+            order.append(n)
 
     def add(name: str):
         if name and name not in order:
             order.append(name)
 
+    seen_location = False
     for b in beats:
-        if b["kind"] == "dialogue":
-            if b["speaker"] not in CROWD_NAMES:
-                add(b["speaker"])
-        elif b["kind"] == "action":
-            found = []
-            for name in known:
-                m = find_name(b["text"], name)
-                if m:
-                    found.append((m.start(), name))
-            if not decl:  # كشف الممثلين الصامتين تلقائيًا فقط عند غياب سطر الشخصيات
-                for wm in WITH_RE.finditer(b["text"]):
-                    pieces = re.split(r"\s+و(?=\w)|\s*[،,]\s*", wm.group(1).strip())
-                    if len(pieces) > 4:
+        if b["kind"] == "location":
+            seen_location = True
+        if b["kind"] != "action" or not seen_location:
+            continue  # السرد الافتتاحي لا يُستخرج منه ممثلون
+        found = []
+        for name in known:
+            m = find_name(b["text"], name)
+            if m:
+                found.append((m.start(), name))
+        if not decl:  # كشف الممثلين الصامتين تلقائيًا فقط عند غياب سطر الشخصيات
+            for wm in WITH_RE.finditer(b["text"]):
+                pieces = re.split(r"\s+و(?=\w)|\s*[،,]\s*", wm.group(1).strip())
+                if len(pieces) > 4:
+                    continue
+                for piece in pieces:
+                    piece = piece.strip()
+                    t = tokens_of(piece)
+                    if not t or len(t) > 3 or (t[0].startswith("ال") and t[0] != "الحاج"):
                         continue
-                    for piece in pieces:
-                        piece = piece.strip()
-                        t = tokens_of(piece)
-                        if not t or len(t) > 3 or (t[0].startswith("ال") and t[0] != "الحاج"):
-                            continue
-                        if piece in CROWD_NAMES:
-                            continue
-                        pos = b["text"].find(piece)
-                        found.append((pos if pos >= 0 else 10**6, piece))
-            for _, name in sorted(found):
-                add(name)
+                    if piece in CROWD_NAMES:
+                        continue
+                    pos = b["text"].find(piece)
+                    found.append((pos if pos >= 0 else 10**6, piece))
+        for _, name in sorted(found):
+            add(name)
 
     cast = []
-    for idx, name in enumerate(order[:6]):
+    for idx, name in enumerate(order[:limit]):
         info = decl.get(name, {})
         old = info.get("old") or any(name.startswith(w) for w in OLD_WORDS)
         gender = info.get("gender") or guess_gender(name)
@@ -869,24 +875,39 @@ def main() -> None:
     p.add_argument("--min-beat", type=float, default=2.6)
     p.add_argument("--max-chars", type=int, default=160)
     p.add_argument("--seed", type=int, default=None)
-    p.add_argument("--style", choices=["cinematic", "cartoon"], default="cinematic",
-                   help="cinematic: صور واقعية/أنمي مولّدة بالذكاء الاصطناعي، cartoon: شخصيات مرسومة بالكود")
+    p.add_argument("--style", choices=["cinematic", "cartoon", "veo"], default="cinematic",
+                   help="veo: مقاطع فيديو حقيقية بصوت (مدفوع)، cinematic: صور مولّدة بحركة كاميرا، "
+                        "cartoon: شخصيات مرسومة بالكود")
+    p.add_argument("--max-clips", type=int, default=0, help="veo: أقصى عدد لقطات (0 = كل القصة)")
+    p.add_argument("--dry-run", action="store_true", help="veo: اكتب خطة اللقطات فقط دون توليد أو صرف")
+    p.add_argument("--veo-model", default=os.environ.get("VEO_MODEL", "veo-3.1-generate-preview"))
+    p.add_argument("--resolution", default="720p", choices=["720p", "1080p"])
+    p.add_argument("--refs", choices=["auto", "none"], default="auto",
+                   help="veo: صور مرجعية للشخصيات (من مجلد characters/ أو تُولَّد تلقائيًا)")
+    p.add_argument("--workers", type=int, default=2, help="veo: عدد اللقطات المتزامنة")
+    p.add_argument("--narration", choices=["stills", "skip"], default="stills",
+                   help="veo: السرد الافتتاحي كصور مع صوت راوٍ، أو تجاهله")
+    p.add_argument("--burn-subs", action="store_true", help="veo: ثبّت الترجمة داخل الفيديو")
     p.add_argument("--look", choices=["realistic", "anime", "cartoon"], default="realistic",
                    help="شكل الصور في الوضع السينمائي")
     p.add_argument("--images", choices=["pollinations", "gemini", "placeholder"], default="pollinations",
                    help="مزود الصور (gemini يحتاج GEMINI_API_KEY)")
-    p.add_argument("--narrator", action="store_true", help="الوضع السينمائي: يقرأ راوٍ أوصاف الحركة")
     args = p.parse_args()
 
     raw = Path(args.file).read_text(encoding="utf-8") if args.file else args.text
+    import story_parser
+    raw = story_parser.normalize(raw or "")
+    args.file, args.text = None, raw
     mode = args.mode
     if mode == "auto":
         mode = "screenplay" if looks_like_screenplay(raw or "") else "simple"
     log(f"الوضع: {mode}")
-    if mode == "screenplay" and args.style == "cinematic":
+    args.narrator = not args.no_narrator
+    if mode == "screenplay" and args.style == "veo":
+        import veo_story
+        veo_story.generate(args)
+    elif mode == "screenplay" and args.style == "cinematic":
         import cinematic
-        if args.no_narrator:
-            args.narrator = False
         cinematic.generate(args)
     elif mode == "screenplay":
         generate_screenplay(args)

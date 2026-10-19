@@ -63,6 +63,13 @@ ACTION_WORDS = [
     ("يدخل", "walking in"), ("يبتسم", "smiling"), ("يصرخ", "shouting"), ("يبكي", "crying"),
     ("يتحدث", "talking"), ("يشير", "pointing"), ("ينظر", "looking"), ("عينين ضيقتين", "narrowed eyes"),
 ]
+NARR_MOODS = [
+    "{who}, standing alone and looking thoughtfully at an empty plot of land where a house will be built.",
+    "{who}, sitting at a simple table at home, worried and thinking.",
+    "{who}, walking along a village road at golden hour, hopeful.",
+    "{who}, talking quietly with a few neighbours in the street.",
+    "{who}, gazing at a half-built concrete house under construction.",
+]
 SHOTS = ["medium close-up", "close-up portrait", "medium shot", "over-the-shoulder close-up"]
 SHIRTS = ["grey", "navy blue", "olive green", "brown", "white", "dark red", "beige"]
 HIJABS = ["beige", "dark grey", "navy blue", "cream", "dusty pink", "olive green"]
@@ -98,23 +105,55 @@ def gen_pollinations(prompt: str, w: int, h: int, seed: int) -> bytes:
     return data
 
 
+def _find_image_b64(obj):
+    """يبحث في الرد عن أول كتلة صورة (type=image) ويعيد بياناتها base64."""
+    if isinstance(obj, dict):
+        if obj.get("type") == "image" and isinstance(obj.get("data"), str):
+            return obj["data"]
+        inline = obj.get("inlineData") or obj.get("inline_data")
+        if isinstance(inline, dict) and isinstance(inline.get("data"), str):
+            return inline["data"]
+        for v in obj.values():
+            r = _find_image_b64(v)
+            if r:
+                return r
+    elif isinstance(obj, list):
+        for v in obj:
+            r = _find_image_b64(v)
+            if r:
+                return r
+    return None
+
+
 def gen_gemini(prompt: str, w: int, h: int, seed: int) -> bytes:
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
         raise ImageError("المتغير GEMINI_API_KEY غير موجود")
-    model = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
+    base = os.environ.get("GEMINI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta").rstrip("/")
     aspect = "16:9" if w > h else ("9:16" if h > w else "1:1")
-    body = {"contents": [{"parts": [{"text": f"{prompt}. Aspect ratio {aspect}."}]}],
-            "generationConfig": {"responseModalities": ["IMAGE"]}}
-    data, _ = http(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                   json.dumps(body).encode(), {"Content-Type": "application/json", "x-goog-api-key": key})
-    js = json.loads(data)
-    for cand in js.get("candidates", []):
-        for part in cand.get("content", {}).get("parts", []):
-            inline = part.get("inlineData") or part.get("inline_data")
-            if inline:
-                return base64.b64decode(inline["data"])
-    raise ImageError(f"لا توجد صورة في الرد: {str(js)[:200]}")
+    headers = {"Content-Type": "application/json", "x-goog-api-key": key}
+    model = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-nano-banana-2.1")
+    errors = []
+    attempts = [
+        (f"{base}/interactions", {"model": model, "input": [{"type": "text", "text": prompt}],
+                                  "response_format": {"type": "image", "mime_type": "image/jpeg",
+                                                      "aspect_ratio": aspect, "image_size": "1K"}}),
+        (f"{base}/models/gemini-2.5-flash-image:generateContent",
+         {"contents": [{"parts": [{"text": f"{prompt}. Aspect ratio {aspect}."}]}],
+          "generationConfig": {"responseModalities": ["IMAGE"]}}),
+    ]
+    for url, body in attempts:
+        try:
+            data, _ = http(url, json.dumps(body).encode(), headers)
+            b64 = _find_image_b64(json.loads(data))
+            if b64:
+                return base64.b64decode(b64)
+            errors.append(f"لا صورة في الرد من {url.rsplit('/', 1)[-1]}")
+        except urllib.error.HTTPError as exc:
+            errors.append(f"HTTP {exc.code} من {url.rsplit('/', 1)[-1]}: {exc.read()[:200]!r}")
+            if exc.code in (401, 403, 429):
+                raise
+    raise ImageError("؛ ".join(errors))
 
 
 def gen_placeholder(prompt: str, w: int, h: int, seed: int) -> bytes:
@@ -135,19 +174,25 @@ def gen_placeholder(prompt: str, w: int, h: int, seed: int) -> bytes:
 PROVIDERS = {"pollinations": gen_pollinations, "gemini": gen_gemini, "placeholder": gen_placeholder}
 
 
-def fetch_image(prompt: str, w: int, h: int, seed: int, provider: str, cache: Path) -> Image.Image:
+def fetch_image(prompt: str, w: int, h: int, seed: int, provider: str, cache: Path,
+                max_attempts: int = 5) -> Image.Image:
     key = hashlib.sha1(f"{provider}|{w}x{h}|{seed}|{prompt}".encode()).hexdigest()[:20]
     path = cache / f"{key}.jpg"
     if path.exists():
         return Image.open(path).convert("RGB")
     last = None
-    for attempt in range(5):
+    for attempt in range(max_attempts):
         try:
             data = PROVIDERS[provider](prompt, w, h, seed)
             img = Image.open(io.BytesIO(data)).convert("RGB")
             cache.mkdir(parents=True, exist_ok=True)
             img.save(path, "JPEG", quality=92)
             return img
+        except ImageError as exc:  # رفض مباشر من الخدمة: محاولة إضافية واحدة فقط
+            last = str(exc)
+            wait = 10
+            if attempt >= 1:
+                break
         except urllib.error.HTTPError as exc:
             last = f"HTTP {exc.code}: {exc.reason}"
             wait = 15 * (attempt + 1) if exc.code in (429, 502, 503, 504) else 5
@@ -208,7 +253,7 @@ def default_desc(c: dict) -> str:
         return ("a 9 year old Syrian boy with short dark hair, big curious eyes" if c["gender"] == "m"
                 else "a 9 year old Syrian girl with long dark braided hair, big curious eyes")
     if c["gender"] == "f":
-        age = "in her 60s, gentle wrinkles" if c["old"] else f"in her {30 + h % 10}s"
+        age = "in her 60s, gentle wrinkles" if c["old"] else f"in her {(30 + h % 10) // 10 * 10}s"
         return (f"a Syrian woman {age} wearing a {HIJABS[h % len(HIJABS)]} hijab and modest long clothing, "
                 "expressive tired eyes")
     if c["old"]:
@@ -323,13 +368,23 @@ def generate(args) -> Path:
         loc_desc = describe_location("") if not any(b["kind"] == "location" for b in beats) else ""
         loc_desc = loc_desc or "exterior, a Syrian village with old stone houses, in soft daylight"
         shot_count: dict[str, int] = {}
+        seen_location, narr_i = False, 0
         for i, b in enumerate(beats):
             if b["kind"] == "location":
                 loc_desc = locdescs.get(b["text"]) or describe_location(b["text"])
+                seen_location = True
                 continue
             if b["kind"] == "title":
                 continue
             names = [c["name"] for c in cast]
+            if b["kind"] == "action" and not seen_location:
+                g = narr_i // 5
+                narr_i += 1
+                lead = cdesc[names[0]] if names else "a Syrian man in his 30s"
+                b["prompt"] = (f"{style}. {NARR_MOODS[g % len(NARR_MOODS)].format(who=lead)} "
+                               f"Setting: {loc_desc}. {NEGATIVE}")
+                b["seed"] = seed0 + g * 31
+                continue
             mentioned = [n for n in names if mv.find_name(b["text"], n)]
             if b["kind"] == "dialogue" and b["speaker"] in cdesc:
                 sp = b["speaker"]
@@ -348,31 +403,40 @@ def generate(args) -> Path:
                 b["seed"] = seed0 + i * 31
             b["prompt"] = prompt
 
-        # ---- توليد الصور ----
-        failed = 0
-        last_err = ""
-        n_img = sum(1 for b in beats if "prompt" in b)
-        k = 0
+        # ---- توليد الصور (بدون تكرار، وبالتوازي) ----
+        unique: dict[tuple, Image.Image | None] = {}
         for b in beats:
-            if "prompt" not in b:
-                continue
-            k += 1
-            log(f"توليد الصورة {k}/{n_img}...")
+            if "prompt" in b:
+                unique.setdefault((b["prompt"], b["seed"]), None)
+        keys = list(unique)
+        log(f"عدد الصور المطلوب توليدها: {len(keys)}")
+        errors: list[str] = []
+
+        def one(k):
             try:
-                img = fetch_image(b["prompt"], gen_w, gen_h, b["seed"], args.images, cache)
+                return k, fetch_image(k[0], gen_w, gen_h, k[1], args.images, cache), None
             except ImageError as exc:
-                failed += 1
-                last_err = str(exc)
-                log(f"  فشلت الصورة {k}: {exc}")
-                img = gen_placeholder_image(gen_w, gen_h, b["seed"])
-            b["base"] = prepare_base(img, w, h)
-            if args.images == "pollinations":
-                time.sleep(1.0)
-        if n_img and failed == n_img:
-            raise SystemExit(f"فشل توليد كل الصور. آخر خطأ: {last_err}\n"
+                return k, None, str(exc)
+
+        workers = 1 if args.images == "pollinations" else 3
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            for n, (k, img, err) in enumerate(pool.map(one, keys), 1):
+                if err:
+                    errors.append(err)
+                    log(f"  فشلت الصورة {n}/{len(keys)}: {err}")
+                    img = gen_placeholder_image(gen_w, gen_h, k[1])
+                else:
+                    log(f"  الصورة {n}/{len(keys)} جاهزة")
+                unique[k] = prepare_base(img, w, h)
+        if keys and len(errors) == len(keys):
+            raise SystemExit(f"فشل توليد كل الصور. آخر خطأ: {errors[-1]}\n"
                              "جرّب --images gemini مع GEMINI_API_KEY، أو أعد التشغيل لاحقًا.")
-        if failed:
-            log(f"تحذير: فشلت {failed} صورة من {n_img} واستُبدلت بصور بديلة.")
+        if errors:
+            log(f"تحذير: فشلت {len(errors)} صورة من {len(keys)} واستُبدلت بصور بديلة.")
+        for b in beats:
+            if "prompt" in b:
+                b["base"] = unique[(b["prompt"], b["seed"])]
 
         shaper = TextShaper(find_font())
         zone_h = int(h * 0.17)

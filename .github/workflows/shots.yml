@@ -1,0 +1,70 @@
+name: Make shot pack
+
+on:
+  # الصق القصة في خانة prompt (أو افتح Issue عنوانه يبدأ بـ shots ونصه القصة)
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "نص القصة أو السيناريو"
+        required: true
+        type: string
+      aspect:
+        description: "الأبعاد"
+        type: choice
+        options: ["9:16", "16:9"]
+        default: "9:16"
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  shots:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.issue.user.login == github.repository_owner &&
+       startsWith(github.event.issue.title, 'shots'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install packages
+        run: pip install -r requirements.txt
+
+      - name: Prepare text
+        env:
+          INPUT_PROMPT: ${{ github.event.inputs.prompt }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          mkdir -p output
+          if [ "${{ github.event_name }}" = "issues" ]; then
+            printf '%s\n' "$ISSUE_BODY" > output/story.txt
+          else
+            printf '%s\n' "$INPUT_PROMPT" > output/story.txt
+          fi
+
+      - name: Build shot pack
+        env:
+          ASPECT: ${{ github.event.inputs.aspect }}
+        run: python make_shots.py -f output/story.txt -o shots --aspect "${ASPECT:-9:16}"
+
+      - name: Commit shots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shots
+          git commit -m "Update shot pack" || echo "no changes"
+          git push
+
+      - name: Comment on issue
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" \
+            --body "✅ حزمة اللقطات جاهزة: https://github.com/${{ github.repository }}/blob/main/shots/shots.md"
