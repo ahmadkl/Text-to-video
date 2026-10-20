@@ -64,7 +64,7 @@ VOICES = {
     },
 }
 
-CROWD_NAMES = {"الجميع", "الكل", "كلهم", "everyone", "all", "everybody"}
+CROWD_NAMES = {"الجميع", "الكل", "كلهم", "الجالسون", "الحضور", "الجيران", "everyone", "all", "everybody"}
 FEMALE_NAMES = {"سارة", "مريم", "فاطمة", "ليلى", "سلمى", "نور", "هدى", "رنا", "ريم", "ندى", "لينا",
                 "هبة", "زينب", "عائشة", "خديجة", "سعاد", "دعاء", "آية", "ياسمين", "أماني", "رغد",
                 "لمى", "جود", "ميس", "رولا", "سناء", "هالة", "منى", "ديما", "رهف", "شهد", "أم",
@@ -872,6 +872,7 @@ def main() -> None:
     p.add_argument("--voice", default="auto", help="auto أو اسم صوت أو none")
     p.add_argument("--no-voice", action="store_true")
     p.add_argument("--no-narrator", action="store_true", help="لا تقرأ أوصاف الحركة")
+    p.add_argument("--no-llm", action="store_true", help="لا تستخدم نموذج لغة لوصف مقاطع السرد")
     p.add_argument("--min-beat", type=float, default=2.6)
     p.add_argument("--max-chars", type=int, default=160)
     p.add_argument("--seed", type=int, default=None)

@@ -297,14 +297,62 @@ def prepare_base(img: Image.Image, w: int, h: int) -> Image.Image:
     return img
 
 
-def camera(base: Image.Image, w: int, h: int, p: float, kb: dict) -> Image.Image:
-    z = kb["z0"] + (kb["z1"] - kb["z0"]) * p
+def camera(base: Image.Image, w: int, h: int, p: float, kb: dict, pulse: float = 0.0) -> Image.Image:
+    z = kb["z0"] + (kb["z1"] - kb["z0"]) * p + pulse
     cw, ch = w / z, h / z
     cx = kb["x0"] + (kb["x1"] - kb["x0"]) * p
     cy = kb["y0"] + (kb["y1"] - kb["y0"]) * p
     left = min(max(cx * w - cw / 2, 0), w - cw)
     top = min(max(cy * h - ch / 2, 0), h - ch)
     return base.resize((w, h), Image.BICUBIC, box=(left, top, left + cw, top + ch))
+
+
+def _json_array(text: str):
+    text = text.strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```[a-zA-Z]*\n|```$", "", text).strip()
+    a, b = text.find("["), text.rfind("]")
+    if a < 0 or b < 0:
+        return None
+    try:
+        arr = json.loads(text[a:b + 1])
+        return [str(x) for x in arr] if isinstance(arr, list) else None
+    except ValueError:
+        return None
+
+
+def llm_describe(passages: list[str]) -> list[str | None]:
+    """وصف إنجليزي لكل مقطع عربي (للصور). Gemini إن وُجد المفتاح، وإلا Pollinations المجاني. يفشل بهدوء."""
+    out: list[str | None] = [None] * len(passages)
+    ask = ("You write image prompts for a realistic Syrian village TV drama storyboard. For each numbered Arabic "
+           "passage, write ONE English sentence (max 40 words) saying what the camera shows: setting, people "
+           "(generic: 'a young Syrian man', never names), action, mood, light. Return ONLY a JSON array of "
+           "strings, same length and order.\n\n")
+    for start in range(0, len(passages), 15):
+        batch = passages[start:start + 15]
+        prompt = ask + "\n".join(f"{i + 1}. {t[:400]}" for i, t in enumerate(batch))
+        arr = None
+        key = os.environ.get("GEMINI_API_KEY")
+        try:
+            if key:
+                model = os.environ.get("GEMINI_TEXT_MODEL", "gemini-2.5-flash")
+                data, _ = http(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                               json.dumps({"contents": [{"parts": [{"text": prompt}]}]}).encode(),
+                               {"Content-Type": "application/json", "x-goog-api-key": key}, timeout=90)
+                arr = _json_array(json.loads(data)["candidates"][0]["content"]["parts"][0]["text"])
+            else:
+                data, _ = http("https://text.pollinations.ai/openai",
+                               json.dumps({"model": "openai", "messages": [{"role": "user", "content": prompt}]}).encode(),
+                               {"Content-Type": "application/json"}, timeout=90)
+                arr = _json_array(json.loads(data)["choices"][0]["message"]["content"])
+        except Exception as exc:  # noqa: BLE001
+            log(f"  تعذّر وصف المقاطع بنموذج اللغة ({type(exc).__name__}: {str(exc)[:80]}) — أستخدم الأوصاف الافتراضية")
+            return out
+        if not arr or len(arr) != len(batch):
+            log("  رد نموذج اللغة غير صالح — أستخدم الأوصاف الافتراضية")
+            return out
+        out[start:start + len(batch)] = arr
+    return out
 
 
 def ken_burns(i: int) -> dict:
@@ -357,6 +405,14 @@ def generate(args) -> Path:
                 b["dur"] = max(args.min_beat, len(b["text"]) / 13 + 1.4)
             else:
                 b["dur"] = max(args.min_beat, 3.2)
+        # نبضة كاميرا تتبع شدة الصوت في الحوار (تعوّض غياب حركة الفم)
+        envs: dict[int, list[float]] = {}
+        for i, b in enumerate(beats):
+            if b["audio"] and b["kind"] == "dialogue":
+                try:
+                    envs[i] = mv.amp_envelope(b["audio"], tmp, i)
+                except Exception:  # noqa: BLE001
+                    pass
         t0 = 0.0
         for b in beats:
             b["start"] = t0
@@ -369,6 +425,34 @@ def generate(args) -> Path:
         loc_desc = loc_desc or "exterior, a Syrian village with old stone houses, in soft daylight"
         shot_count: dict[str, int] = {}
         seen_location, narr_i = False, 0
+        # وصف إنجليزي لكل خمسة مقاطع سرد متتالية ولكل وصف حركة (اختياري، يفشل بهدوء)
+        llm_desc: dict[tuple, str] = {}
+        if not getattr(args, "no_llm", False):
+            items, keys_ = [], []
+            seen_loc2, n2 = False, 0
+            for i, b in enumerate(beats):
+                if b["kind"] == "location":
+                    seen_loc2 = True
+                elif b["kind"] == "action" and not seen_loc2:
+                    if n2 % 5 == 0:
+                        group_text = " ".join(x["text"] for x in beats[i:i + 5]
+                                              if x["kind"] == "action")
+                        items.append(group_text)
+                        keys_.append(i)
+                    n2 += 1
+            if items:
+                log(f"وصف {len(items)} مقطع سرد بنموذج اللغة...")
+                res = llm_describe(items)
+                cur_desc, n3 = None, 0
+                narr_idx = [i for i, b in enumerate(beats) if b["kind"] == "action"
+                            and i < next((j for j, x in enumerate(beats) if x["kind"] == "location"), len(beats))]
+                for pos, i in enumerate(narr_idx):
+                    if pos % 5 == 0:
+                        cur_desc = res[pos // 5]
+                    if cur_desc:
+                        llm_desc[(i, "n")] = cur_desc
+                if llm_desc:
+                    log(f"  وُصف {len(items)} مقطع")
         for i, b in enumerate(beats):
             if b["kind"] == "location":
                 loc_desc = locdescs.get(b["text"]) or describe_location(b["text"])
@@ -381,6 +465,10 @@ def generate(args) -> Path:
                 g = narr_i // 5
                 narr_i += 1
                 lead = cdesc[names[0]] if names else "a Syrian man in his 30s"
+                if (i, "n") in llm_desc:
+                    b["prompt"] = f"{style}. {llm_desc[(i, 'n')]} {NEGATIVE}"
+                    b["seed"] = seed0 + (narr_i - 1) * 31
+                    continue
                 b["prompt"] = (f"{style}. {NARR_MOODS[g % len(NARR_MOODS)].format(who=lead)} "
                                f"Setting: {loc_desc}. {NEGATIVE}")
                 b["seed"] = seed0 + g * 31
@@ -464,7 +552,13 @@ def generate(args) -> Path:
                     lay.putalpha(lay.getchannel("A").point(lambda v, k=a: int(v * k)))
                     frame.paste(lay, ((w - lay.width) // 2, (h - lay.height) // 2), lay)
                 return frame
-            frame = camera(b["base"], w, h, min(1.0, local / b["dur"]), b["kb"])
+            pulse = 0.0
+            env = envs.get(i)
+            if env is not None:
+                k = int((local - lead_in) * FPS)
+                if 0 <= k < len(env):
+                    pulse = 0.012 * env[k]
+            frame = camera(b["base"], w, h, min(1.0, local / b["dur"]), b["kb"], pulse)
             ca = smooth((local - 0.1) / 0.3)
             if ca > 0.01:
                 cap = b["layer"]

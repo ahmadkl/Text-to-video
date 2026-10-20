@@ -147,7 +147,11 @@ def _chunk(text: str, limit: int = 200) -> list[str]:
         if not piece:
             continue
         while len(piece) > limit * 1.4:
-            cut = piece.rfind(" ", 0, limit)
+            # نقطع قبل كلمة ربط (و، لكن، ثم، حيث...) كي لا ينقطع الكلام في منتصف العبارة
+            window = piece[:limit]
+            cands = [m.start() for m in re.finditer(r" (?=(?:و|ف)\S|لكن |ثم |حيث |عندما |بعد |قبل |الى |حتى )", window)
+                     if m.start() > limit * 0.45]
+            cut = cands[-1] if cands else piece.rfind(" ", 0, limit)
             cut = cut if cut > 40 else limit
             if cur:
                 out.append(cur)
@@ -202,6 +206,12 @@ def _convert_scene(body: str) -> list[str]:
         if DESCRIPTOR.match(text):
             lines.extend(["", f"{name} {text}"])
             continue
+        if name in ("زوجته", "زوجها"):
+            owners = [s for s in last_speakers if not s.startswith("زوج") and s != name]
+            if owners:
+                name = f"{'زوجة' if name == 'زوجته' else 'زوج'} {owners[-1]}"
+        elif name.startswith("زوجة "):
+            pass
         last_speakers.append(name)
         text, tail = split_tail(text)
         if text:
