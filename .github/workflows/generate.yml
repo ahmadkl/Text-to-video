@@ -18,10 +18,18 @@ on:
         type: string
         default: "auto"
       style:
-        description: "cinematic: صور واقعية/أنمي بالذكاء الاصطناعي، cartoon: شخصيات مرسومة بالكود"
+        description: "veo: فيديو حقيقي بصوت وحركة (مدفوع، يحتاج GEMINI_API_KEY)، cinematic: صور بحركة كاميرا، cartoon: شخصيات مرسومة"
         type: choice
-        options: ["cinematic", "cartoon"]
+        options: ["veo", "cinematic", "cartoon"]
         default: "cinematic"
+      max_clips:
+        description: "veo فقط: أقصى عدد لقطات (3 للتجربة، 0 = كل القصة)"
+        type: string
+        default: "3"
+      dry_run:
+        description: "veo فقط: اكتب خطة اللقطات والتكلفة دون توليد أو صرف"
+        type: boolean
+        default: false
       look:
         description: "شكل الصور في الوضع السينمائي"
         type: choice
@@ -53,7 +61,7 @@ jobs:
       (github.event.issue.user.login == github.repository_owner &&
        startsWith(github.event.issue.title, 'video'))
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
 
@@ -90,6 +98,8 @@ jobs:
           STYLE: ${{ github.event.inputs.style }}
           LOOK: ${{ github.event.inputs.look }}
           IMAGES: ${{ github.event.inputs.images }}
+          MAX_CLIPS: ${{ github.event.inputs.max_clips }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           POLLINATIONS_TOKEN: ${{ secrets.POLLINATIONS_TOKEN }}
         run: |
@@ -97,9 +107,14 @@ jobs:
           if [ "$IMG" = "auto" ]; then
             if [ -n "$GEMINI_API_KEY" ]; then IMG=gemini; else IMG=pollinations; fi
           fi
+          EXTRA=""
+          if [ "${STYLE:-cinematic}" = "veo" ]; then
+            EXTRA="--max-clips ${MAX_CLIPS:-3}"
+            if [ "$DRY_RUN" = "true" ]; then EXTRA="$EXTRA --dry-run"; fi
+          fi
           python make_video.py -f output/prompt.txt -o output/video.mp4 \
             --aspect "${ASPECT:-16:9}" --voice "${VOICE:-auto}" --mode "${MODE:-auto}" \
-            --style "${STYLE:-cinematic}" --look "${LOOK:-realistic}" --images "$IMG"
+            --style "${STYLE:-cinematic}" --look "${LOOK:-realistic}" --images "$IMG" $EXTRA
 
       - uses: actions/upload-artifact@v4
         with:

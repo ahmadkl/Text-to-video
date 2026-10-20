@@ -279,6 +279,9 @@ def generate(args) -> Path:
     log(f"الشخصيات: {', '.join(cdesc) or '-'}")
     log(f"اللقطات: {len(shots)} من {total_shots} → {seconds} ثانية فيديو مولّد "
         f"({'كل القصة' if len(shots) == total_shots else 'تجربة محدودة'})")
+    rate = {"fast": 0.10, "standard": 0.40, "lite": 0.05}[getattr(args, "veo_quality", "fast")]
+    log(f"التكلفة التقديرية: نحو {seconds * rate:.1f} دولارًا بسعر {rate} دولار للثانية "
+        "(تقدير من أسعار منشورة، تأكد من صفحة تسعير Gemini API؛ كل لقطة تُحاسَب حتى لو لم تعجبك)")
     log(f"الخطة المكتوبة: {plan_path}")
     if args.dry_run:
         log("وضع --dry-run: لم يُولَّد أي شيء ولم يُصرف أي مبلغ.")
@@ -287,6 +290,7 @@ def generate(args) -> Path:
         raise SystemExit("توليد الفيديو يحتاج GEMINI_API_KEY (مفتاح بحساب فوترة). أضِفه في Secrets، "
                          "أو شغّل --dry-run للحصول على خطة اللقطات فقط.")
 
+    veo_model = veo.resolve_model(key, getattr(args, "veo_model", ""), getattr(args, "veo_quality", "fast"), log)
     w, h = ASPECTS[args.aspect]
     cache = out_path.parent / "cache"
     aspect = "9:16" if args.aspect == "9:16" else "16:9"
@@ -298,7 +302,7 @@ def generate(args) -> Path:
         r = [refs[n] for n in shot["chars"] if n in refs][:3]
         log(f"  لقطة {i + 1}/{len(shots)}: إرسال للتوليد...")
         try:
-            clip = veo.generate_clip(prompts[i], aspect=aspect, key=key, cache_dir=cache, model=args.veo_model,
+            clip = veo.generate_clip(prompts[i], aspect=aspect, key=key, cache_dir=cache, model=veo_model,
                                      refs=r, resolution=args.resolution)
             log(f"  لقطة {i + 1}/{len(shots)}: جاهزة")
             return i, clip, None

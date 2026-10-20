@@ -14,12 +14,13 @@ import hashlib
 import json
 import mimetypes
 import os
+import re
 import time
 import urllib.error
 import urllib.request
 from pathlib import Path
 
-DEFAULT_MODEL = "veo-3.1-generate-preview"
+DEFAULT_MODEL = ""  # فارغ = اختيار تلقائي من النماذج المتاحة لمفتاحك (انظر resolve_model)
 
 
 class VeoError(Exception):
@@ -64,6 +65,52 @@ def _with_retry(fn, tries: int = 4):
     raise VeoError(last or "فشل غير معروف")
 
 
+def list_models(key: str) -> list[str]:
+    """أسماء نماذج Veo المتاحة لهذا المفتاح (تدعم predictLongRunning)."""
+    names, token = [], None
+    for _ in range(6):
+        url = f"{base_url()}/models?pageSize=200" + (f"&pageToken={token}" if token else "")
+        js = json.loads(_with_retry(lambda: _call(url, key)))
+        for m in js.get("models", []):
+            name = m.get("name", "").split("/", 1)[-1]
+            if "veo" in name.lower() and "predictLongRunning" in m.get("supportedGenerationMethods", []):
+                names.append(name)
+        token = js.get("nextPageToken")
+        if not token:
+            break
+    return names
+
+
+def pick_model(names: list[str], quality: str = "fast") -> str:
+    """يفضّل النماذج المستقرة على التجريبية (التجريبية تُسحب)، ثم الأحدث، ثم الفئة المطلوبة."""
+    tiers = {"fast": {"fast": 5, "lite": 2, "std": 0}, "standard": {"std": 5, "fast": 2, "lite": 0},
+             "lite": {"lite": 5, "fast": 2, "std": 0}}[quality]
+
+    def score(n: str) -> float:
+        low = n.lower()
+        ver = re.search(r"veo-(\d+(?:\.\d+)?)", low)
+        tier = "lite" if "lite" in low else ("fast" if "fast" in low else "std")
+        return (-100 if "preview" in low else 0) + (float(ver.group(1)) * 10 if ver else 0) + tiers[tier]
+
+    return max(names, key=score)
+
+
+def resolve_model(key: str, requested: str = "", quality: str = "fast", log=print) -> str:
+    """النموذج المحدد صراحةً يُستخدم كما هو، وإلا يُختار تلقائيًا من القائمة الحية."""
+    requested = requested or os.environ.get("VEO_MODEL", "")
+    if requested:
+        return requested
+    try:
+        names = list_models(key)
+    except VeoError as exc:
+        raise VeoError(f"تعذّر جلب قائمة نماذج Veo (تحقق من المفتاح والفوترة): {exc}") from exc
+    if not names:
+        raise VeoError("مفتاحك لا يرى أي نموذج Veo. فعّل الفوترة لحساب Gemini API أو حدّد VEO_MODEL.")
+    chosen = pick_model(names, quality)
+    log(f"نموذج Veo المختار: {chosen} (المتاح: {', '.join(names)})")
+    return chosen
+
+
 def _image_part(path: Path) -> dict:
     mime = mimetypes.guess_type(str(path))[0] or "image/png"
     return {"image": {"inlineData": {"mimeType": mime, "data": base64.b64encode(path.read_bytes()).decode()}},
@@ -89,6 +136,9 @@ def generate_clip(prompt: str, *, aspect: str, key: str, cache_dir: Path, model:
         raise VeoError("المتغير GEMINI_API_KEY غير موجود")
 
     instance: dict = {"prompt": prompt}
+    if refs and "3.1" not in model:
+        log("تنبيه: الصور المرجعية تحتاج Veo 3.1، سيُتجاهل التثبيت بالصور مع هذا النموذج.")
+        refs = ()
     if refs:
         instance["referenceImages"] = [_image_part(Path(r)) for r in list(refs)[:3]]
         duration = 8  # الصور المرجعية تتطلب مقطعًا من 8 ثوانٍ

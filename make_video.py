@@ -881,7 +881,10 @@ def main() -> None:
                         "cartoon: شخصيات مرسومة بالكود")
     p.add_argument("--max-clips", type=int, default=0, help="veo: أقصى عدد لقطات (0 = كل القصة)")
     p.add_argument("--dry-run", action="store_true", help="veo: اكتب خطة اللقطات فقط دون توليد أو صرف")
-    p.add_argument("--veo-model", default=os.environ.get("VEO_MODEL", "veo-3.1-generate-preview"))
+    p.add_argument("--veo-model", default=os.environ.get("VEO_MODEL", ""),
+                   help="veo: اسم النموذج؛ إن تُرك فارغًا يُختار تلقائيًا من النماذج المتاحة لمفتاحك")
+    p.add_argument("--veo-quality", choices=["fast", "standard", "lite"], default="fast",
+                   help="veo: فئة النموذج عند الاختيار التلقائي (fast أرخص من standard)")
     p.add_argument("--resolution", default="720p", choices=["720p", "1080p"])
     p.add_argument("--refs", choices=["auto", "none"], default="auto",
                    help="veo: صور مرجعية للشخصيات (من مجلد characters/ أو تُولَّد تلقائيًا)")
