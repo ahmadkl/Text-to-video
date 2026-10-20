@@ -27,6 +27,7 @@ import random
 import re
 import subprocess
 import tempfile
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -91,14 +92,26 @@ def http(url: str, data: bytes | None = None, headers: dict | None = None, timeo
         return resp.read(), resp.headers.get("Content-Type", "")
 
 
+_poll_lock = threading.Lock()
+_poll_last = [0.0]
+
+
 def gen_pollinations(prompt: str, w: int, h: int, seed: int) -> bytes:
     q = urllib.parse.quote(prompt[:1500], safe="")
+    model = os.environ.get("POLLINATIONS_MODEL", "flux")
     url = (f"https://image.pollinations.ai/prompt/{q}?width={w}&height={h}&seed={seed}"
-           f"&model=flux&nologo=true&private=true")
+           f"&model={model}&nologo=true")
     headers = {}
     token = os.environ.get("POLLINATIONS_TOKEN")
     if token:
         headers["Authorization"] = f"Bearer {token}"
+    # الطبقة المجانية بلا مفتاح تقبل طلبًا واحدًا كل ~15 ثانية: نباعد الطلبات بدل ضربها بسرعة
+    gap = 4.0 if token else 16.5
+    with _poll_lock:
+        wait = _poll_last[0] + gap - time.time()
+        if wait > 0:
+            time.sleep(wait)
+        _poll_last[0] = time.time()
     data, ctype = http(url, headers=headers)
     if not ctype.startswith("image"):
         raise ImageError(f"رد غير متوقع ({ctype}): {data[:150]!r}")
@@ -175,7 +188,7 @@ PROVIDERS = {"pollinations": gen_pollinations, "gemini": gen_gemini, "placeholde
 
 
 def fetch_image(prompt: str, w: int, h: int, seed: int, provider: str, cache: Path,
-                max_attempts: int = 5) -> Image.Image:
+                max_attempts: int = 6) -> Image.Image:
     key = hashlib.sha1(f"{provider}|{w}x{h}|{seed}|{prompt}".encode()).hexdigest()[:20]
     path = cache / f"{key}.jpg"
     if path.exists():
@@ -195,7 +208,7 @@ def fetch_image(prompt: str, w: int, h: int, seed: int, provider: str, cache: Pa
                 break
         except urllib.error.HTTPError as exc:
             last = f"HTTP {exc.code}: {exc.reason}"
-            wait = 15 * (attempt + 1) if exc.code in (429, 502, 503, 504) else 5
+            wait = 20 * (attempt + 1) if exc.code in (402, 429, 502, 503, 504) else 5
             if exc.code in (401, 403) and attempt >= 1:
                 break
         except Exception as exc:  # noqa: BLE001
@@ -499,6 +512,7 @@ def generate(args) -> Path:
         keys = list(unique)
         log(f"عدد الصور المطلوب توليدها: {len(keys)}")
         errors: list[str] = []
+        failed_keys: set = set()
 
         def one(k):
             try:
@@ -512,19 +526,33 @@ def generate(args) -> Path:
             for n, (k, img, err) in enumerate(pool.map(one, keys), 1):
                 if err:
                     errors.append(err)
+                    failed_keys.add(k)
                     log(f"  فشلت الصورة {n}/{len(keys)}: {err}")
-                    img = gen_placeholder_image(gen_w, gen_h, k[1])
+                    unique[k] = None
                 else:
                     log(f"  الصورة {n}/{len(keys)} جاهزة")
-                unique[k] = prepare_base(img, w, h)
+                    unique[k] = prepare_base(img, w, h)
         if keys and len(errors) == len(keys):
             raise SystemExit(f"فشل توليد كل الصور. آخر خطأ: {errors[-1]}\n"
                              "جرّب --images gemini مع GEMINI_API_KEY، أو أعد التشغيل لاحقًا.")
         if errors:
-            log(f"تحذير: فشلت {len(errors)} صورة من {len(keys)} واستُبدلت بصور بديلة.")
-        for b in beats:
-            if "prompt" in b:
-                b["base"] = unique[(b["prompt"], b["seed"])]
+            log(f"تحذير: فشلت {len(errors)} صورة من {len(keys)}؛ تُستبدل بأقرب لقطة ناجحة.")
+        with_prompt = [i for i, b in enumerate(beats) if "prompt" in b]
+        for i in with_prompt:
+            b = beats[i]
+            k = (b["prompt"], b["seed"])
+            if unique.get(k) is not None:
+                b["base"] = unique[k]
+        for i in with_prompt:
+            b = beats[i]
+            if "base" in b:
+                continue
+            same = [j for j in with_prompt if "base" in beats[j] and beats[j].get("speaker") == b.get("speaker")
+                    and b.get("speaker")]
+            near = sorted((j for j in with_prompt if "base" in beats[j]), key=lambda j: abs(j - i))
+            pick = (sorted(same, key=lambda j: abs(j - i)) or near or [None])[0]
+            b["base"] = beats[pick]["base"] if pick is not None else prepare_base(
+                gen_placeholder_image(gen_w, gen_h, b["seed"]), w, h)
 
         shaper = TextShaper(find_font())
         zone_h = int(h * 0.17)
