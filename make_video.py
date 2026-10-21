@@ -900,6 +900,12 @@ def main() -> None:
 
     raw = Path(args.file).read_text(encoding="utf-8") if args.file else args.text
     import story_parser
+    if story_parser.looks_like_prompt_pack(raw or "") and not os.environ.get("ALLOW_PROMPT_TEXT"):
+        raise SystemExit(
+            "هذا النص يبدو أوامر توليد جاهزة (Visual: / Audio: / Use the approved character...) وليس قصة.\n"
+            "إدخاله هنا يعرض الأوامر نفسها ترجمةً ويقرؤها الراوي. أحد حلّين:\n"
+            "  1) الصق القصة أو السيناريو نفسه (فقرات وحوار) وسيكتب المشروع الأوامر بنفسه (Make shot pack).\n"
+            "  2) استخدم هذه الأوامر مباشرة في Google Flow ثم ارفع المقاطع إلى clips/ لتُدمج.")
     raw = story_parser.normalize(raw or "")
     args.file, args.text = None, raw
     mode = args.mode

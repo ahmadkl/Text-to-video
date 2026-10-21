@@ -246,6 +246,21 @@ def flat_to_screenplay(raw: str) -> str:
     return "\n".join(out).strip() + "\n"
 
 
+PROMPT_LINE = re.compile(
+    r"^\s*(?:[*#>\-•]+\s*)*(visual|audio|camera|performance|style|negative|duration|aspect ratio|"
+    r"reference images?|clip\s*\d+|shot\s*\d+|الأداء|الاداء|المرئيات|الصوت|الكاميرا|التصوير)\b[^\n]{0,12}[:：]",
+    re.I | re.M)
+
+
+def looks_like_prompt_pack(raw: str) -> bool:
+    """نص مكتوب أصلًا كأوامر لأدوات توليد الفيديو (Visual: / Audio: / Use the approved character...)
+    وليس قصة أو سيناريو. إدخاله كقصة يُظهر الأوامر نفسها ترجمةً ويقرؤها الراوي."""
+    hits = len(PROMPT_LINE.findall(raw))
+    refs = len(re.findall(r"approved character reference|keep the exact same faces|no subtitles, no|"
+                          r"photorealistic|35mm|lip-?sync", raw, re.I))
+    return hits >= 3 or (hits >= 1 and refs >= 3)
+
+
 def normalize(raw: str) -> str:
     """يعيد النص منسّقًا إن كان متصلًا، وإلا كما هو."""
     return flat_to_screenplay(raw) if looks_flat(raw) else raw
