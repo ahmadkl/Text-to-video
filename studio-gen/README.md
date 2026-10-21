@@ -1,0 +1,33 @@
+# studio-gen — من نص السيناريو إلى فيديو بحوار
+
+يحوّل سيناريو عربي إلى لقطات، ثم يولّد كل لقطة **بالصورة والصوت معاً** عبر LTX-2.5، ثم يدمجها في فيديو واحد.
+
+```
+scene.txt ──► screenplay.py (مشاهد + لقطات + متحدث) ──► prompts.py (وصف سينمائي + الحوار بين علامتي اقتباس)
+   ComfyUI (صور شخصيات ثابتة الوجه) ──► ltx_backend.py (LTX-2.5: فيديو + صوت متزامن) ──► stitch.py ──► final.mp4
+```
+
+## التشغيل
+```bash
+git clone https://github.com/Lightricks/LTX-2 && cd LTX-2 && uv sync --extra natten && cd ..
+hf auth login
+hf download Lightricks/LTX-2.5 diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors \
+  text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors vae/ltx-2.5-video-vae-bf16.safetensors \
+  vae/ltx-2.5-audio-vae-bf16.safetensors \
+  latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors --local-dir LTX-2/models/ltx-2.5
+
+python -m studiogen.cli plan    examples/scene.txt -c examples/characters.json        # خطة اللقطات فقط (بدون GPU)
+python -m studiogen.cli portraits -c examples/characters.json --checkpoint <ckpt>    # اختياري: يحتاج ComfyUI شغّال
+python -m studiogen.cli render  examples/scene.txt -c examples/characters.json --ltx-repo LTX-2 --dry-run
+```
+احذف `--dry-run` للتوليد الفعلي. اللقطات المنتهية تُتخطى عند إعادة التشغيل.
+
+## صيغة السيناريو
+`المشهد 7 — المكان` ثم أسطر `الاسم: الحوار`، والأقواس `(...)` وصف حركة يُلصق باللقطة التالية.
+النص المتصل في فقرة واحدة يُقطَّع تلقائياً عند كل اسم شخصية معروف. الأسماء تُعرَّف في `characters.json` (الشكل بالإنجليزية والصوت).
+
+## تنبيهات صريحة
+- **اللهجة:** لم أتحقق أن LTX-2.5 ينطق العربية الشامية جيداً. جرّب لقطة واحدة أولاً. إن كان النطق ضعيفاً فالبديل خط الصوت المنفصل (TTS) ثم خط `A2VidPipeline` الموجود في المستودع نفسه.
+- **العتاد:** النموذج 22B والملفات ~66 جيجا، ومتطلبات VRAM غير مذكورة في المستودع. غالباً يلزم كرت كبير (A100/H100) أو تحويل fp8 مع offload. Colab المجاني (T4) لن يكفي.
+- **المدة:** اللقطة الواحدة حتى ~10 ثوانٍ. الأطول تُبنى بدمج لقطات (الشخصية تُثبَّت بصورة مرجعية في الإطار الأول).
+- **الترخيص:** LTX-2.5 تحت ترخيص LTX Community (راجع `LICENSE-2_x` في مستودعهم) قبل أي استخدام تجاري.

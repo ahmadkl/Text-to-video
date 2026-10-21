@@ -125,3 +125,7 @@ python text_to_video.py -f examples/arabic.txt --no-voice
 - التعليق الصوتي يستخدم `edge-tts` ويحتاج اتصالًا بالإنترنت. إن فشل يُنتَج الفيديو بدون صوت مع تحذير.
 - لخط عربي مخصص: ضع ملف `.ttf` داخل مجلد `fonts/` أو اضبط المتغير `FONT_PATH`.
 - كل فيديو يُنتج أيضًا `video.srt` بالترجمة.
+
+## مسار مفتوح المصدر: LTX-2.5 (فيديو + صوت + حوار في خطوة واحدة)
+
+مجلد [`studio-gen/`](studio-gen/) يولّد اللقطات بالصورة والكلام معاً بنموذج مفتوح المصدر يعمل على GPU خاص بك (بدون مفتاح API). التفاصيل والتشغيل في [`studio-gen/README.md`](studio-gen/README.md)، ودفتر Colab في `studio-gen/notebooks/colab.ipynb`.

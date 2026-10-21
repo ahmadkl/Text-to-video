@@ -1,0 +1,13 @@
+{
+  "style": {
+    "language": "Levantine Syrian Arabic",
+    "look": "photorealistic cinematic Syrian TV drama, natural daylight, shallow depth of field",
+    "aspect": "vertical 9:16"
+  },
+  "characters": [
+    {"name": "علي", "look": "a Syrian man in his mid-30s, short black hair, stubble, brown jacket over a grey shirt", "voice": "medium-pitch, tense"},
+    {"name": "عبد الله", "look": "a Syrian man in his 40s, receding hair, thick mustache, white shirt with rolled sleeves", "voice": "deep, firm"},
+    {"name": "عامر", "look": "a young Syrian engineer in his late 20s wearing a yellow hard hat and an orange safety vest", "voice": "clear, calm"},
+    {"name": "أبو عامر", "look": "an elderly Syrian man in his 70s, white keffiyeh, deeply lined face, gentle eyes", "voice": "hoarse, slow, warm"}
+  ]
+}
