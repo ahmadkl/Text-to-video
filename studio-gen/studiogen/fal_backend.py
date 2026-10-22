@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 import time
+import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
@@ -41,8 +42,14 @@ def build_input(cfg: FalConfig, prompt: str, seconds: float) -> dict:
 def _req(url: str, key: str, data: dict | None = None) -> dict:
     req = urllib.request.Request(url, data=json.dumps(data).encode() if data is not None else None,
                                  headers={"Authorization": f"Key {key}", "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        return json.loads(r.read())
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            return json.loads(r.read())
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", "replace")[:400]
+        hint = {401: "المفتاح FAL_KEY غير صحيح", 403: "الرصيد منتهٍ أو الحساب غير مفعّل للفوترة في fal.ai",
+                404: "اسم النموذج غير موجود", 422: "مدخلات غير مقبولة", 429: "طلبات كثيرة، أعد المحاولة"}.get(exc.code, "")
+        raise RuntimeError(f"fal.ai رفض الطلب: HTTP {exc.code} {hint} | {body}") from exc
 
 
 def generate_shot(cfg: FalConfig, prompt: str, seconds: float, out_path: str, base: str = "https://queue.fal.run",

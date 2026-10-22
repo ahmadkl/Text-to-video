@@ -16,9 +16,9 @@ on:
         options: ["720p", "1080p"]
         default: "720p"
       dry_run:
-        description: "تقدير التكلفة فقط دون توليد"
+        description: "تقدير التكلفة فقط دون توليد (اتركه مغلقًا للتوليد الفعلي، والتجربة الافتراضية لقطة واحدة)"
         type: boolean
-        default: true
+        default: false
   issues:
     types: [opened]
 
@@ -55,12 +55,35 @@ jobs:
           MAX_SHOTS: ${{ github.event.inputs.max_shots }}
           RES: ${{ github.event.inputs.resolution }}
           DRY: ${{ github.event_name == 'issues' && 'false' || github.event.inputs.dry_run }}
+        shell: bash
         run: |
+          set -o pipefail
           EXTRA=""
           [ "$DRY" = "true" ] && EXTRA="--dry-run"
+          if [ "$DRY" != "true" ] && [ -z "$FAL_KEY" ]; then
+            echo "::error::السرّ FAL_KEY غير مضاف. أضفه من Settings ← Secrets and variables ← Actions (مفتاح من fal.ai مع رصيد)، أو شغّل مع dry_run لتجربة بلا توليد."
+            echo "FAL_KEY missing" > ../out/log.txt
+            exit 1
+          fi
           python -m studiogen.cli render ../out/story.txt -c characters.json --backend fal \
             --resolution "${RES:-720p}" --max-shots "${MAX_SHOTS:-1}" \
             --out-dir ../out/clips --final ../out/final.mp4 $EXTRA 2>&1 | tee ../out/log.txt
+          if [ "$DRY" != "true" ] && [ ! -s ../out/final.mp4 ]; then
+            echo "::error::انتهى التشغيل بلا فيديو. راجع السجل أعلاه."
+            exit 1
+          fi
+      - name: Summary
+        if: always()
+        run: |
+          { echo "### نتيجة التشغيل"; echo '```'; tail -n 15 out/log.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ltx-output
+          path: |
+            out/final.mp4
+            out/log.txt
+          if-no-files-found: ignore
       - name: Publish release
         if: ${{ hashFiles('out/final.mp4') != '' }}
         env:
@@ -70,7 +93,7 @@ jobs:
           gh release create "$TAG" out/final.mp4 --title "$TAG" --notes "LTX-2.5 video with dialogue"
           echo "URL=$(gh release view "$TAG" --json url -q .url)" >> "$GITHUB_ENV"
       - name: Comment on issue
-        if: github.event_name == 'issues'
+        if: always() && github.event_name == 'issues'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
