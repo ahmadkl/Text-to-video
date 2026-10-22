@@ -35,7 +35,6 @@ VEO_STYLES = {
     "realistic": ("Cinematic live-action footage from a realistic Syrian TV drama, natural lighting, "
                   "35mm film look, subtle handheld camera, shallow depth of field, realistic faces"),
     "anime": cn.LOOKS["anime"] + ", fluid animation",
-    "cartoon": cn.LOOKS["cartoon"] + ", fluid animation",
 }
 
 

@@ -326,7 +326,7 @@ def main() -> None:
     src.add_argument("-t", "--text")
     p.add_argument("-o", "--output", default="shots")
     p.add_argument("--aspect", choices=["9:16", "16:9"], default="9:16")
-    p.add_argument("--look", choices=["realistic", "anime", "cartoon"], default="realistic")
+    p.add_argument("--look", choices=["realistic", "anime"], default="realistic")
     args = p.parse_args()
 
     raw = Path(args.file).read_text(encoding="utf-8") if args.file else args.text
@@ -336,7 +336,7 @@ def main() -> None:
     style = style_override or {
         "realistic": ("Cinematic photorealistic live-action footage from a Syrian TV drama, natural light, "
                       "35mm film look, shallow depth of field, realistic faces and skin"),
-        "anime": cn.LOOKS["anime"], "cartoon": cn.LOOKS["cartoon"]}[args.look]
+        "anime": cn.LOOKS["anime"]}[args.look]
     cast = build_cast_all(beats, decl, descs)
     shots, scenes, narration = plan(beats, cast, locdescs, style, args.aspect)
     write_outputs(shots, scenes, narration, cast, Path(args.output), args.aspect, style)

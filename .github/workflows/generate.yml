@@ -18,9 +18,9 @@ on:
         type: string
         default: "auto"
       style:
-        description: "veo: فيديو حقيقي بصوت وحركة (مدفوع، يحتاج GEMINI_API_KEY)، cinematic: صور بحركة كاميرا، cartoon: شخصيات مرسومة"
+        description: "veo: فيديو حقيقي بصوت وحركة (مدفوع، يحتاج GEMINI_API_KEY)، cinematic: صور بحركة كاميرا"
         type: choice
-        options: ["veo", "cinematic", "cartoon"]
+        options: ["veo", "cinematic"]
         default: "cinematic"
       max_clips:
         description: "veo فقط: أقصى عدد لقطات (3 للتجربة، 0 = كل القصة)"
@@ -33,7 +33,7 @@ on:
       look:
         description: "شكل الصور في الوضع السينمائي"
         type: choice
-        options: ["realistic", "anime", "cartoon"]
+        options: ["realistic", "anime"]
         default: "realistic"
       images:
         description: "مزود الصور: auto يستخدم gemini إن وُجد مفتاحه وإلا pollinations المجاني"

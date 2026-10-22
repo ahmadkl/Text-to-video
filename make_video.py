@@ -296,108 +296,6 @@ def make_look(name: str, gender: str, old: bool, child: bool, idx: int) -> dict:
 # ----------------------------------------------------------------------------
 # رسم الشخصيات
 # ----------------------------------------------------------------------------
-BASE_W, BASE_H = 300, 520
-S = 3  # تكبير للتنعيم
-
-
-def make_sprite(look: dict, scale: float) -> Image.Image:
-    im = Image.new("RGBA", (BASE_W * S, BASE_H * S), (0, 0, 0, 0))
-    d = ImageDraw.Draw(im)
-
-    def R(x0, y0, x1, y1):
-        return [x0 * S, y0 * S, x1 * S, y1 * S]
-
-    skin = look["skin"]
-    dark_skin = lerp(skin, (0, 0, 0), 0.12)
-    style = look["style"]
-
-    if style == "long":
-        d.ellipse(R(84, 70, 216, 310), fill=look["hair_color"])
-    # ساقان وحذاء
-    for x in (104, 160):
-        d.rounded_rectangle(R(x, 385, x + 38, 500), radius=10 * S, fill=look["pants"])
-        d.ellipse(R(x - 6, 488, x + 46, 516), fill=(35, 30, 30))
-    # الجذع والذراعان
-    d.rounded_rectangle(R(78, 228, 222, 405), radius=34 * S, fill=look["shirt"])
-    for x0 in (52, 212):
-        d.rounded_rectangle(R(x0, 240, x0 + 38, 385), radius=18 * S, fill=lerp(look["shirt"], (0, 0, 0), 0.08))
-        d.ellipse(R(x0 + 2, 372, x0 + 36, 404), fill=skin)
-    if style == "scarf":
-        d.ellipse(R(70, 188, 230, 320), fill=look["scarf"])
-        d.rounded_rectangle(R(92, 250, 208, 405), radius=30 * S, fill=look["shirt"])
-        d.ellipse(R(84, 196, 216, 290), fill=look["scarf"])
-    else:
-        d.rectangle(R(132, 198, 168, 242), fill=dark_skin)
-    # الرأس
-    if style == "scarf":
-        d.ellipse(R(82, 66, 218, 230), fill=look["scarf"])
-        d.ellipse(R(104, 88, 196, 214), fill=skin)
-    else:
-        for x in (88, 212):
-            d.ellipse(R(x - 12, 132, x + 12, 160), fill=dark_skin)
-        d.ellipse(R(92, 76, 208, 210), fill=skin)
-    # شعر / قبعة / لحية
-    hair = look["hair_color"]
-    if style == "short":
-        d.pieslice(R(88, 58, 212, 200), 180, 360, fill=hair)
-    elif style == "cap":
-        d.pieslice(R(88, 58, 212, 196), 180, 360, fill=look["scarf"])
-        d.ellipse(R(130, 110, 232, 128), fill=lerp(look["scarf"], (0, 0, 0), 0.2))
-    elif style == "long":
-        d.pieslice(R(88, 62, 212, 200), 180, 360, fill=hair)
-    if look["beard"]:
-        d.pieslice(R(94, 118, 206, 222), 0, 180, fill=hair)
-        d.ellipse(R(130, 160, 170, 196), fill=skin)
-    return im.resize((int(BASE_W * scale), int(BASE_H * scale)), Image.LANCZOS)
-
-
-FACE_BOX = (96, 104, 108, 104)  # x, y, w, h
-
-
-def face_patch(look: dict, scale: float, open_amt: float, blink: bool, look_dx: float,
-               brow_up: float) -> Image.Image:
-    ox, oy, pw, ph = FACE_BOX
-    im = Image.new("RGBA", (pw * S, ph * S), (0, 0, 0, 0))
-    d = ImageDraw.Draw(im)
-
-    def P(x, y):
-        return ((x - ox) * S, (y - oy) * S)
-
-    brow = look["hair_color"] if not look["old"] else (170, 170, 170)
-    if look["style"] == "scarf":
-        brow = (60, 40, 30)
-    for ex in (129, 171):
-        cy = 143
-        if blink:
-            d.line([P(ex - 10, cy + 3), P(ex + 10, cy + 3)], fill=(60, 40, 30), width=3 * S)
-        else:
-            d.ellipse([*P(ex - 11, cy - 13), *P(ex + 11, cy + 13)], fill=(255, 255, 255))
-            d.ellipse([*P(ex - 6 + look_dx, cy - 6), *P(ex + 6 + look_dx, cy + 6)], fill=(40, 28, 22))
-            d.ellipse([*P(ex - 3 + look_dx, cy - 5), *P(ex + look_dx, cy - 2)], fill=(255, 255, 255))
-        d.line([P(ex - 13, cy - 21 - brow_up), P(ex + 13, cy - 24 - brow_up)], fill=brow, width=4 * S)
-    mx, my = 150, 182
-    if open_amt < 0.1:
-        d.arc([*P(mx - 16, my - 10), *P(mx + 16, my + 6)], 20, 160, fill=(120, 48, 52), width=3 * S)
-    else:
-        hh = 5 + open_amt * 26
-        d.ellipse([*P(mx - 14, my - hh / 2 + 2), *P(mx + 14, my + hh / 2 + 2)], fill=(110, 28, 44))
-        if hh > 14:
-            d.ellipse([*P(mx - 8, my + hh / 2 - 7), *P(mx + 8, my + hh / 2 + 2)], fill=(225, 110, 120))
-    return im.resize((int(pw * scale), int(ph * scale)), Image.LANCZOS)
-
-
-def pill(shaper: TextShaper, text: str, size: int, bg: tuple, fg=(255, 255, 255)) -> Image.Image:
-    rtl = is_arabic(text)
-    shown = shaper.prep(text, rtl)
-    font = shaper.font(size)
-    kw = shaper.kwargs(rtl)
-    tw = int(font.getlength(shown, **kw))
-    pad = size // 2
-    im = Image.new("RGBA", (tw + pad * 2, int(size * 1.6)), (0, 0, 0, 0))
-    d = ImageDraw.Draw(im)
-    d.rounded_rectangle([0, 0, im.width - 1, im.height - 1], radius=im.height // 2, fill=bg)
-    d.text((pad, int(size * 0.22)), shown, font=font, fill=fg, **kw)
-    return im
 
 
 def caption_layer(shaper: TextShaper, text: str, w: int, zone_h: int, dialogue: bool,
@@ -437,74 +335,6 @@ def caption_layer(shaper: TextShaper, text: str, w: int, zone_h: int, dialogue: 
 def vgrad(w: int, h: int, top: tuple, bottom: tuple) -> Image.Image:
     mask = Image.linear_gradient("L").resize((w, h))
     return Image.composite(Image.new("RGB", (w, h), bottom), Image.new("RGB", (w, h), top), mask)
-
-
-def build_bg(w: int, h: int, kind: str, night: bool, seed: int) -> Image.Image:
-    rng = random.Random(seed)
-    gy = int(h * 0.745)
-    img = Image.new("RGB", (w, h))
-    d = ImageDraw.Draw(img)
-    if kind == "outdoor":
-        top, bot = ((12, 20, 55), (62, 72, 120)) if night else ((84, 160, 232), (205, 235, 252))
-        img.paste(vgrad(w, gy, top, bot), (0, 0))
-        # شمس أو قمر
-        r = int(min(w, h) * 0.065)
-        cx, cy = int(w * rng.choice([0.2, 0.8])), int(h * 0.15)
-        glow = Image.new("RGBA", (r * 8, r * 8), (0, 0, 0, 0))
-        ImageDraw.Draw(glow).ellipse([r * 2, r * 2, r * 6, r * 6],
-                                     fill=(235, 235, 255, 90) if night else (255, 240, 170, 120))
-        glow = glow.filter(ImageFilter.GaussianBlur(r * 0.9))
-        img.paste(glow, (cx - r * 4, cy - r * 4), glow)
-        d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(245, 245, 255) if night else (255, 236, 150))
-        # بيوت
-        tones = [(170, 150, 120), (190, 168, 135), (150, 132, 110), (205, 185, 150), (140, 120, 100)]
-        if night:
-            tones = [lerp(t, (10, 14, 40), 0.55) for t in tones]
-        x = -int(w * 0.03)
-        while x < w:
-            bw = int(w * rng.uniform(0.13, 0.22))
-            bh = int(h * rng.uniform(0.12, 0.25))
-            c = rng.choice(tones)
-            d.rectangle([x, gy - bh, x + bw, gy], fill=c)
-            d.rectangle([x, gy - bh, x + bw, gy - bh + max(4, h // 90)], fill=lerp(c, (0, 0, 0), 0.25))
-            for i in range(rng.randint(1, 2)):
-                wx = x + int(bw * (0.18 + i * 0.45))
-                ws = int(bw * 0.2)
-                wc = (250, 215, 120) if night else (60, 80, 100)
-                d.rectangle([wx, gy - bh + int(bh * 0.2), wx + ws, gy - bh + int(bh * 0.2) + ws], fill=wc)
-            d.rectangle([x + int(bw * 0.4), gy - int(bh * 0.4), x + int(bw * 0.6), gy],
-                        fill=lerp(c, (30, 20, 10), 0.55))
-            x += bw + int(w * rng.uniform(0.0, 0.03))
-        ground = (52, 74, 60) if night else (198, 172, 124)
-        img.paste(vgrad(w, h - gy, ground, lerp(ground, (0, 0, 0), 0.25)), (0, gy))
-        d.rectangle([0, gy, w, gy + max(3, h // 140)], fill=lerp(ground, (255, 255, 255), 0.25))
-    else:
-        wall = rng.choice([(222, 196, 160), (190, 205, 215), (214, 180, 170), (200, 210, 180)])
-        if night:
-            wall = lerp(wall, (20, 24, 40), 0.55)
-        img.paste(vgrad(w, gy, lerp(wall, (255, 255, 255), 0.12), lerp(wall, (0, 0, 0), 0.12)), (0, 0))
-        floor = lerp(wall, (90, 60, 40), 0.6)
-        img.paste(vgrad(w, h - gy, floor, lerp(floor, (0, 0, 0), 0.3)), (0, gy))
-        d.rectangle([0, gy - max(10, h // 45), w, gy], fill=lerp(wall, (0, 0, 0), 0.3))
-        ww, wh = int(w * 0.2), int(h * 0.3)
-        wx, wy = int(w * rng.choice([0.14, 0.62])), int(h * 0.1)
-        d.rectangle([wx - 8, wy - 8, wx + ww + 8, wy + wh + 8], fill=(245, 245, 245))
-        img.paste(vgrad(ww, wh, (30, 40, 80), (90, 100, 140)) if night
-                  else vgrad(ww, wh, (130, 190, 240), (215, 238, 250)), (wx, wy))
-        d.line([wx + ww // 2, wy, wx + ww // 2, wy + wh], fill=(245, 245, 245), width=6)
-        d.line([wx, wy + wh // 2, wx + ww, wy + wh // 2], fill=(245, 245, 245), width=6)
-    return img
-
-
-def make_cloud(w: int, h: int, rng: random.Random) -> Image.Image:
-    cw, ch = int(w * 0.28), int(h * 0.12)
-    im = Image.new("RGBA", (cw, int(ch * 1.8)), (0, 0, 0, 0))
-    d = ImageDraw.Draw(im)
-    for _ in range(5):
-        x, y = rng.uniform(0.1, 0.55) * cw, rng.uniform(0.2, 0.45) * ch
-        r = rng.uniform(0.18, 0.3) * ch * 1.6
-        d.ellipse([x, y, x + r * 1.5, y + r], fill=(255, 255, 255, 190))
-    return im.filter(ImageFilter.GaussianBlur(ch * 0.06))
 
 
 # ----------------------------------------------------------------------------
@@ -616,251 +446,6 @@ def looks_like_screenplay(raw: str) -> bool:
     return speaker_lines >= 2
 
 
-def generate_screenplay(args) -> Path:
-    raw = Path(args.file).read_text(encoding="utf-8") if args.file else args.text
-    beats, decl = parse_screenplay(raw or "", args.max_chars)
-    if not beats:
-        raise SystemExit("النص فارغ.")
-    cast = build_cast(beats, decl)
-    lang = "ar" if is_arabic(raw) else "en"
-    log(f"عدد المقاطع: {len(beats)} | الشخصيات: {', '.join(c['name'] for c in cast) or '-'}")
-
-    w, h = ASPECTS[args.aspect]
-    out_path = Path(args.output)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    seed = args.seed if args.seed is not None else int(hashlib.sha1(raw.encode()).hexdigest()[:8], 16)
-    rng = random.Random(seed)
-
-    narrate = not args.no_narrator
-    assign_voices(beats, cast, lang, narrate, args.voice)
-    use_voice = args.voice != "none" and not args.no_voice
-
-    with tempfile.TemporaryDirectory() as tmpdir:
-        tmp = Path(tmpdir)
-        voices: list[str | None] = [None] * len(beats)
-        if use_voice:
-            log("توليد الأصوات...")
-            voices = synthesize(beats, tmp, VOICES[lang]["fallback"])
-
-        lead_in = 0.45
-        envs: dict[int, list[float]] = {}
-        for i, (b, v) in enumerate(zip(beats, voices)):
-            b["audio"] = v
-            if v:
-                b["dur"] = max(args.min_beat, probe_duration(v) + lead_in + (0.55 if b["kind"] == "dialogue" else 0.7))
-                if b["kind"] == "dialogue":
-                    envs[i] = amp_envelope(v, tmp, i)
-            elif b["kind"] in ("title", "location"):
-                b["dur"] = max(3.0, args.min_beat)
-            else:
-                b["dur"] = max(args.min_beat, len(b["text"]) / 14 + 1.4)
-        t0 = 0.0
-        for b in beats:
-            b["start"] = t0
-            t0 += b["dur"]
-        total = t0
-        log(f"مدة الفيديو: {total:.1f} ثانية")
-
-        # ---- الحلقات (كل مكان جديد) ----
-        episodes: list[dict] = []
-        beat_ep: list[int] = []
-        for i, b in enumerate(beats):
-            if b["kind"] == "location" or not episodes:
-                text = b["text"] if b["kind"] == "location" else ""
-                kind = "indoor" if re.search(r"(داخلي|داخلى|INT\b)", text, re.I) else (
-                    "outdoor" if text else "indoor")
-                episodes.append({"kind": kind, "night": bool(NIGHT_RE.search(text)), "leave": {},
-                                 "seed": rng.randrange(10**6)})
-            beat_ep.append(len(episodes) - 1)
-
-        cast_names = [c["name"] for c in cast]
-        last_speaker = None
-        for i, b in enumerate(beats):
-            ep = episodes[beat_ep[i]]
-            if b["kind"] == "dialogue" and b["speaker"] in cast_names:
-                last_speaker = b["speaker"]
-            if b["kind"] == "action":
-                lm = LEAVE_RE.search(b["text"])
-                if lm:
-                    before = [(m.start(), n) for n in cast_names
-                              if (m := find_name(b["text"][:lm.start()], n))]
-                    who = max(before)[1] if before else last_speaker
-                    if who and who not in ep["leave"]:
-                        ep["leave"][who] = b["start"] + max(0.4, b["dur"] * 0.45)
-        for ep in episodes:
-            ep["bg"] = build_bg(w, h, ep["kind"], ep["night"], ep["seed"])
-
-        # ---- العناصر المرسومة مسبقًا ----
-        shaper = TextShaper(find_font())
-        n = max(1, len(cast))
-        slot_w = w * 0.9 / n
-        target_h = h * 0.50
-        scale = min(target_h / BASE_H, slot_w * 0.9 / BASE_W, 1.3)
-        y_base = int(h * 0.745)
-        label_size = max(18, int(min(w, h) * 0.034))
-        for k, c in enumerate(cast):
-            mul = 0.72 if c["child"] else 1.0
-            c["scale"] = scale * mul
-            c["sprite"] = make_sprite(c, c["scale"])
-            slot = (n - 1 - k) if lang == "ar" else k
-            c["cx"] = int(w * 0.05 + slot_w * (slot + 0.5))
-            c["label"] = pill(shaper, c["name"], label_size, (20, 20, 30, 190))
-            c["label_on"] = pill(shaper, c["name"], label_size, c["shirt"] + (235,))
-            sw = int(c["sprite"].width * 0.8)
-            shadow = Image.new("RGBA", (sw, int(sw * 0.22)), (0, 0, 0, 0))
-            ImageDraw.Draw(shadow).ellipse([0, 0, sw - 1, shadow.height - 1], fill=(0, 0, 0, 90))
-            c["shadow"] = shadow.filter(ImageFilter.GaussianBlur(4))
-
-        for i, b in enumerate(beats):
-            if b["kind"] in ("title", "location"):
-                pal = PALETTES[int(hashlib.sha1(b["text"].encode()).hexdigest()[:4], 16) % len(PALETTES)]
-                b["pal"] = pal
-                b["layer"] = render_text_layer(shaper, b["text"], (w, h), b["kind"] == "title", pal[2])
-                b["card"] = vgrad(w, h, pal[0], pal[1])
-            else:
-                text = b["text"]
-                if b["kind"] == "dialogue":
-                    sp = b["speaker"] + (f" ({b['paren']})" if b.get("paren") else "")
-                    text = f"{sp}: {text}"
-                zone_h = int(h * 0.165)
-                b["layer"] = caption_layer(shaper, text, w, zone_h, b["kind"] == "dialogue",
-                                           int(min(w, h) * 0.05))
-        cap_y = int(h * 0.81)
-        clouds_rng = random.Random(seed + 7)
-        clouds = [(make_cloud(w, h, clouds_rng), clouds_rng.uniform(0.05, 0.14), clouds_rng.uniform(0.05, 0.3),
-                   clouds_rng.uniform(0, 1)) for _ in range(3)]
-
-        silent = tmp / "silent.mp4"
-        ff = subprocess.Popen(
-            ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{w}x{h}",
-             "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "medium", "-crf", "20",
-             "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(silent)], stdin=subprocess.PIPE)
-
-        n_frames = int(round(total * FPS))
-        bi = 0
-        for f in range(n_frames):
-            t = f / FPS
-            while bi < len(beats) - 1 and t >= beats[bi + 1]["start"]:
-                bi += 1
-            b = beats[bi]
-            local = t - b["start"]
-
-            if b["kind"] in ("title", "location"):
-                frame = b["card"].copy()
-                fin = smooth((local - 0.1) / 0.5)
-                fout = 1 - smooth((local - (b["dur"] - 0.4)) / 0.35)
-                a = fin * fout
-                if a > 0.01:
-                    layer = b["layer"]
-                    al = layer.getchannel("A").point(lambda v, k=a: int(v * k))
-                    lay = layer.copy()
-                    lay.putalpha(al)
-                    frame.paste(lay, ((w - lay.width) // 2, (h - lay.height) // 2), lay)
-            else:
-                ep = episodes[beat_ep[bi]]
-                frame = ep["bg"].copy()
-                if ep["kind"] == "outdoor":
-                    for sprite, speed, yfrac, ph in clouds:
-                        x = int(((t * speed * 0.05 + ph) % 1.3 - 0.2) * w)
-                        a = 90 if ep["night"] else 255
-                        cl = sprite if a == 255 else sprite.copy()
-                        if a != 255:
-                            cl.putalpha(cl.getchannel("A").point(lambda v: int(v * 0.25)))
-                        frame.paste(cl, (x, int(h * (0.05 + yfrac * 0.25))), cl)
-
-                intro = smooth((t - episodes_start(beats, beat_ep, bi)) / 0.6)
-                speaker = b.get("speaker") if b["kind"] == "dialogue" else None
-                crowd = speaker in CROWD_NAMES
-                env = envs.get(bi)
-                amp = 0.0
-                if speaker is not None:
-                    idx = int((local - lead_in) * FPS)
-                    if env is not None:
-                        amp = env[idx] if 0 <= idx < len(env) else 0.0
-                    elif 0 <= local - lead_in < b["dur"] - 0.6:
-                        amp = 0.5 + 0.5 * math.sin(t * 13)
-                speaker_c = next((c for c in cast if c["name"] == speaker), None)
-
-                for c in cast:
-                    leave_t = ep["leave"].get(c["name"])
-                    dx = 0.0
-                    if leave_t is not None and t > leave_t:
-                        dx = smooth((t - leave_t) / 1.4) * (w * 0.7) * (-1 if c["cx"] < w / 2 else 1)
-                        if abs(dx) > w * 0.69:
-                            continue
-                    talking = crowd or c is speaker_c
-                    open_amt = amp if talking else 0.0
-                    bounce = -open_amt * 6 if talking else 0.0
-                    bob = math.sin(t * 2.0 + c["phase"]) * 1.5
-                    blink = ((t + c["phase"]) % c["blink_period"]) < 0.14
-                    if speaker_c is not None and c is not speaker_c:
-                        look_dx = 3 if speaker_c["cx"] > c["cx"] else -3
-                    else:
-                        look_dx = 0
-                    spr = c["sprite"].copy()
-                    patch = face_patch(c, c["scale"], open_amt, blink, look_dx, open_amt * 3)
-                    spr.alpha_composite(patch, (int(FACE_BOX[0] * c["scale"]), int(FACE_BOX[1] * c["scale"])))
-                    rise = int((1 - intro) * h * 0.08)
-                    if intro < 0.99:
-                        spr.putalpha(spr.getchannel("A").point(lambda v, k=intro: int(v * k)))
-                    x = int(c["cx"] + dx - spr.width / 2)
-                    y = int(y_base - spr.height + bounce + bob + rise)
-                    sh = c["shadow"]
-                    frame.paste(sh, (int(c["cx"] + dx - sh.width / 2), y_base - sh.height // 3), sh)
-                    frame.paste(spr, (x, y), spr)
-                    lab = c["label_on"] if talking else c["label"]
-                    if abs(dx) < w * 0.3:
-                        frame.paste(lab, (int(c["cx"] - lab.width / 2), y_base + int(h * 0.012)), lab)
-
-                cap = b["layer"]
-                ca = smooth(local / 0.25)
-                if ca < 0.99:
-                    cap = cap.copy()
-                    cap.putalpha(cap.getchannel("A").point(lambda v, k=ca: int(v * k)))
-                frame.paste(cap, (0, cap_y), cap)
-
-                # انتقال ناعم من بطاقة العنوان/المكان
-                if bi > 0 and beats[bi - 1]["kind"] in ("title", "location") and local < 0.4:
-                    frame = Image.blend(beats[bi - 1]["card"], frame, smooth(local / 0.4))
-
-            d = ImageDraw.Draw(frame)
-            bar_h = max(4, h // 150)
-            d.rectangle((0, h - bar_h, int(w * t / total), h), fill=(255, 205, 90))
-            ff.stdin.write(frame.tobytes())  # type: ignore[union-attr]
-            if f % (FPS * 5) == 0:
-                log(f"  {f * 100 // n_frames}%")
-
-        ff.stdin.close()  # type: ignore[union-attr]
-        if ff.wait() != 0:
-            raise SystemExit("فشل ffmpeg أثناء ترميز الفيديو.")
-
-        audio = ttv.build_audio(beats, [b["audio"] for b in beats], [b["dur"] for b in beats], lead_in, tmp)
-        if audio:
-            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(silent), "-i", audio,
-                            "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-shortest", str(out_path)],
-                           check=True)
-        else:
-            import shutil
-            shutil.copy(silent, out_path)
-
-    srt = out_path.with_suffix(".srt")
-    with open(srt, "w", encoding="utf-8") as fh:
-        for i, b in enumerate(beats):
-            line = f"{b['speaker']}: {b['text']}" if b["kind"] == "dialogue" else b["text"]
-            fh.write(f"{i + 1}\n{srt_time(b['start'] + lead_in)} --> {srt_time(b['start'] + b['dur'] - 0.2)}\n{line}\n\n")
-    log(f"تم: {out_path} ({total:.1f}s, {w}x{h})")
-    return out_path
-
-
-def episodes_start(beats: list[dict], beat_ep: list[int], bi: int) -> float:
-    """وقت أول مقطع (غير بطاقة) داخل نفس الحلقة."""
-    ep = beat_ep[bi]
-    for j, b in enumerate(beats):
-        if beat_ep[j] == ep and b["kind"] not in ("title", "location"):
-            return b["start"]
-    return beats[bi]["start"]
-
-
 def main() -> None:
     p = argparse.ArgumentParser(description="توليد فيديو من نص أو سيناريو")
     src = p.add_mutually_exclusive_group(required=True)
@@ -876,9 +461,8 @@ def main() -> None:
     p.add_argument("--min-beat", type=float, default=2.6)
     p.add_argument("--max-chars", type=int, default=160)
     p.add_argument("--seed", type=int, default=None)
-    p.add_argument("--style", choices=["cinematic", "cartoon", "veo"], default="cinematic",
-                   help="veo: مقاطع فيديو حقيقية بصوت (مدفوع)، cinematic: صور مولّدة بحركة كاميرا، "
-                        "cartoon: شخصيات مرسومة بالكود")
+    p.add_argument("--style", choices=["cinematic", "veo"], default="cinematic",
+                   help="veo: مقاطع فيديو حقيقية بصوت (مدفوع)، cinematic: صور مولّدة بحركة كاميرا")
     p.add_argument("--max-clips", type=int, default=0, help="veo: أقصى عدد لقطات (0 = كل القصة)")
     p.add_argument("--dry-run", action="store_true", help="veo: اكتب خطة اللقطات فقط دون توليد أو صرف")
     p.add_argument("--veo-model", default=os.environ.get("VEO_MODEL", ""),
@@ -892,7 +476,7 @@ def main() -> None:
     p.add_argument("--narration", choices=["stills", "skip"], default="stills",
                    help="veo: السرد الافتتاحي كصور مع صوت راوٍ، أو تجاهله")
     p.add_argument("--burn-subs", action="store_true", help="veo: ثبّت الترجمة داخل الفيديو")
-    p.add_argument("--look", choices=["realistic", "anime", "cartoon"], default="realistic",
+    p.add_argument("--look", choices=["realistic", "anime"], default="realistic",
                    help="شكل الصور في الوضع السينمائي")
     p.add_argument("--images", choices=["pollinations", "gemini", "placeholder"], default="pollinations",
                    help="مزود الصور (gemini يحتاج GEMINI_API_KEY)")
@@ -916,11 +500,9 @@ def main() -> None:
     if mode == "screenplay" and args.style == "veo":
         import veo_story
         veo_story.generate(args)
-    elif mode == "screenplay" and args.style == "cinematic":
+    elif mode == "screenplay":
         import cinematic
         cinematic.generate(args)
-    elif mode == "screenplay":
-        generate_screenplay(args)
     else:
         ns = types.SimpleNamespace(file=args.file, text=args.text, output=args.output, aspect=args.aspect,
                                    voice=args.voice, no_voice=args.no_voice, rate="+0%",

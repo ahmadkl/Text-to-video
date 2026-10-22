@@ -46,7 +46,6 @@ LOOKS = {
                   "35mm film look, shallow depth of field, realistic faces and skin texture, high detail"),
     "anime": ("high quality anime movie still, detailed cel shading, expressive faces, "
               "soft cinematic lighting, vibrant colors, Studio Ghibli inspired background art"),
-    "cartoon": "3D animated movie still, Pixar style, expressive faces, soft lighting",
 }
 NEGATIVE = "no text, no subtitles, no watermark, no logo, no captions, no frames"
 
