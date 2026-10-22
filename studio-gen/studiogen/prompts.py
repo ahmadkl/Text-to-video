@@ -41,19 +41,29 @@ DEFAULT_STYLE = {
 }
 
 
+def _has_arabic(text: str) -> bool:
+    return any("\u0600" <= ch <= "\u06ff" for ch in text or "")
+
+
 def shot_prompt(shot: Shot, chars: dict[str, Character], style: dict | None = None,
                 setting_en: str = "", silent: bool = False) -> str:
     """silent=True: for video models without audio. The words are NOT put in the prompt (they come from TTS)."""
     st = {**DEFAULT_STYLE, **(style or {})}
     setting = setting_en or shot.setting or "an outdoor residential street"
+    action = shot.action
+    if silent:  # LTX-Video 2B reads English only: Arabic text in the prompt just confuses it
+        if _has_arabic(setting):
+            setting = "an outdoor residential street in a Syrian town, daytime"
+        if _has_arabic(action):
+            action = ""
     parts = [f"{st['look']}. Location: {setting}."]
     if shot.speaker:
         c = chars.get(shot.speaker)
         look = c.look if c else "a man"
         voice = c.voice if c else "natural"
         parts.append(f"A medium close-up of {look}, facing the camera slightly off-axis.")
-        if shot.action:
-            parts.append(f"{shot.action}.")
+        if action:
+            parts.append(f"{action}.")
         if silent:
             parts.append(f"{'She' if c and c.female else 'He'} talks, lips moving naturally, with subtle head and "
                          "hand movement and expressive eyes. The camera is steady with a slight handheld feel.")
@@ -64,7 +74,7 @@ def shot_prompt(shot: Shot, chars: dict[str, Character], style: dict | None = No
         )
         parts.append("Natural room tone and ambient street sound. The camera holds steady with a subtle handheld feel.")
     else:
-        parts.append(f"{shot.action}. No one speaks. Natural ambient sound only. Slow, steady camera movement.")
+        parts.append(f"{action or 'The scene continues'}. No one speaks. Natural ambient sound only. Slow, steady camera movement.")
     return " ".join(parts)
 
 

@@ -73,7 +73,8 @@ def _render_free(args, chars, style, scenes):
                                                     args.seed + sh.index,
                                                     str(portrait) if portrait and portrait.exists() else None)
             if audio:
-                stitch.mux_audio(silent, audio, base + ".mp4")
+                stitch.mux_audio(silent, audio, base + "_nosub.mp4")
+                stitch.burn_subtitle(base + "_nosub.mp4", f"{sh.speaker}: {sh.line}", base + ".mp4")
             else:
                 Path(silent).replace(base + ".mp4")
             print("done:", base + ".mp4", flush=True)
