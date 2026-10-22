@@ -10,7 +10,7 @@ import argparse
 import json
 from pathlib import Path
 
-from . import api_backend, comfy_backend, fal_backend, ltx_backend, prompts, screenplay, stitch
+from . import api_backend, comfy_backend, fal_backend, ltx_backend, ltx_lite_backend, prompts, screenplay, stitch, tts_backend
 
 
 def _load(args):
@@ -44,8 +44,48 @@ def cmd_portraits(args):
         print("portrait:", out)
 
 
+def _render_free(args, chars, style, scenes):
+    """Free pipeline: Syrian-Arabic TTS (edge-tts) + silent LTX-Video 2B on a free GPU + ffmpeg."""
+    lite = ltx_lite_backend.LiteConfig(repo=args.lite_repo, width=args.lite_width, height=args.lite_height)
+    voices = tts_backend.assign_voices(
+        list(chars),
+        {n: {"voice": c.tts_voice, "rate": c.tts_rate, "pitch": c.tts_pitch} for n, c in chars.items()},
+        {n for n, c in chars.items() if c.female})
+    shots = [(sc, sh) for sc in scenes for sh in sc.shots]
+    if args.max_shots:
+        shots = shots[:args.max_shots]
+    clips = []
+    for sc, sh in shots:
+        base = f"{args.out_dir}/s{sc.number:02d}_{sh.index:02d}"
+        prompt = prompts.shot_prompt(sh, chars, style, args.setting_en, silent=True)
+        if args.dry_run:
+            v = voices.get(sh.speaker, {}).get("voice", "-")
+            print(f"[{sc.number}.{sh.index}] {sh.speaker} voice={v}: {prompt[:140]}...")
+            clips.append(base + ".mp4")
+            continue
+        if not Path(base + ".mp4").exists():  # resume
+            audio = None
+            if sh.speaker and sh.line:
+                audio = tts_backend.synthesize(sh.line, voices[sh.speaker], base + ".mp3")
+            seconds = (tts_backend.duration(audio) + 0.5) if audio else sh.seconds
+            portrait = Path(args.portraits) / f"{sh.speaker}.png" if sh.speaker else None
+            silent = ltx_lite_backend.generate_shot(lite, prompt, base + "_silent.mp4", seconds,
+                                                    args.seed + sh.index,
+                                                    str(portrait) if portrait and portrait.exists() else None)
+            if audio:
+                stitch.mux_audio(silent, audio, base + ".mp4")
+            else:
+                Path(silent).replace(base + ".mp4")
+            print("done:", base + ".mp4", flush=True)
+        clips.append(base + ".mp4")
+    if not args.dry_run:
+        print("final:", stitch.concat(clips, args.final, lite.width, lite.height, lite.fps))
+
+
 def cmd_render(args):
     chars, style, scenes = _load(args)
+    if args.backend == "free":
+        return _render_free(args, chars, style, scenes)
     use_api = args.backend == "api"
     use_fal = args.backend == "fal"
     fcfg = fal_backend.FalConfig(resolution=args.resolution, aspect_ratio="16:9" if args.landscape else "9:16")
@@ -100,8 +140,10 @@ def main():
     p.add_argument("--setting-en", default=""); p.add_argument("--portraits", default="portraits")
     p.add_argument("--out-dir", default="clips"); p.add_argument("--final", default="final.mp4")
     p.add_argument("--seed", type=int, default=42); p.add_argument("--dry-run", action="store_true")
-    p.add_argument("--backend", choices=["local", "api", "fal"], default="local",
-                   help="local = your GPU; api = api.ltx.io (LTX_API_KEY); fal = fal.ai (FAL_KEY)")
+    p.add_argument("--backend", choices=["local", "api", "fal", "free"], default="local",
+                   help="local = big GPU, LTX-2.5; api = api.ltx.io (paid); fal = fal.ai (paid); free = TTS + LTX-Video 2B on a free GPU")
+    p.add_argument("--lite-repo", default="LTX-Video"); p.add_argument("--lite-width", type=int, default=480)
+    p.add_argument("--lite-height", type=int, default=832)
     p.add_argument("--api-model", default="ltx-2-5-fast")
     p.add_argument("--resolution", default="720p", help="720p or 1080p (api / fal backends)")
     p.add_argument("--landscape", action="store_true"); p.add_argument("--max-shots", type=int, default=0)

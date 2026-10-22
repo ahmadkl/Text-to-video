@@ -63,3 +63,38 @@ def test_stitch_mixed_clips(tmp_path):
     dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", out],
                                capture_output=True, text=True).stdout)
     assert 1.8 < dur < 2.3
+
+
+def test_voices_distinct_and_deterministic():
+    from studiogen import tts_backend as T
+    v = T.assign_voices(["a", "b", "c", "d"])
+    assert len({(x["voice"], x["pitch"]) for x in v.values()}) == 4
+    assert v == T.assign_voices(["a", "b", "c", "d"])
+    o = T.assign_voices(["a"], {"a": {"voice": "ar-SA-HamedNeural", "pitch": None, "rate": None}})
+    assert o["a"]["voice"] == "ar-SA-HamedNeural"
+    f = T.assign_voices(["x"], female={"x"})
+    assert "Amany" in f["x"]["voice"]
+
+
+def test_lite_frames_and_command():
+    from studiogen import ltx_lite_backend as L
+    c = L.LiteConfig()
+    assert (c.frames_for(5.0) - 1) % 8 == 0 and c.frames_for(99) == c.frames_for(10)
+    cmd = L.build_command(c, "p", "out", 121, 3, image="a.png")
+    assert "--offload_to_cpu" in cmd and cmd[cmd.index("--conditioning_start_frames") + 1] == "0"
+    assert "ltxv-2b-0.9.8-distilled.yaml" in " ".join(cmd)
+
+
+def test_mux_audio_freezes_video_to_speech_length(tmp_path):
+    v, a, o = str(tmp_path / "v.mp4"), str(tmp_path / "a.mp3"), str(tmp_path / "o.mp4")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "color=green:s=320x240:d=1", v], check=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "sine=d=3", a], check=True)
+    stitch.mux_audio(v, a, o)
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", o],
+                               capture_output=True, text=True).stdout)
+    assert 3.2 < dur < 3.7
+
+
+def test_character_new_fields_optional():
+    c = prompts.Character(name="x", look="l", voice="v")
+    assert c.female is False and c.tts_voice is None

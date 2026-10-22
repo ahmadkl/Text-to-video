@@ -36,3 +36,10 @@ python -m studiogen.cli render  examples/scene.txt -c examples/characters.json -
 - `--backend fal` (مفتاح `FAL_KEY` من fal.ai) أو `--backend api` (مفتاح `LTX_API_KEY` من docs.ltx.io). التكلفة التقريبية 0.09$ للثانية بدقة 720p عمودي، وأقل لقطة 6 ثوانٍ.
 - أضف المفتاح في **Settings ← Secrets and variables ← Actions** باسم `FAL_KEY`، ثم **Actions ← LTX video with dialogue (fal.ai) ← Run workflow**. ابدأ بـ `dry_run` ثم `max_shots=1`.
 - هذا المسار نص فقط (بدون صورة مرجعية)، فثبات الوجوه يعتمد على وصف الشخصية في `characters.json`.
+
+## المسار المجاني بالكامل (`--backend free`)
+صوت شامي مجاني (edge-tts: ar-SY وar-LB وar-JO، لكل شخصية صوت ودرجة مختلفة) + فيديو بـ LTX-Video 2B على GPU مجاني (Kaggle أو Colab) + دمج بـ ffmpeg. دفتر التشغيل: `notebooks/free-gpu.ipynb`.
+- اللقطة تطول بقدر الحوار (حتى 10 ثوانٍ)، والصوت يُلصق على فيديو صامت: **حركة الفم لا تتطابق مع الكلام تماماً**.
+- جودة LTX-Video 2B أقل بوضوح من LTX-2.5 وVeo.
+- edge-tts خدمة غير رسمية من مايكروسوفت قد تتغير أو تُحجب. أسماء الأصوات: `edge-tts --list-voices | grep ar-`، ويمكن تحديد `tts_voice` و`tts_rate` و`tts_pitch` و`female` لكل شخصية في `characters.json`.
+- لم يُجرَّب على GPU حقيقي بعد؛ جرّب لقطة واحدة أولاً (`--max-shots 1`).

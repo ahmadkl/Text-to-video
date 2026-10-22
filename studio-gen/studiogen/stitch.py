@@ -31,3 +31,16 @@ def concat(clips: list[str], out_path: str, width: int = 512, height: int = 896,
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
                         "-c", "copy", out_path], check=True)
     return out_path
+
+
+def mux_audio(video: str, audio: str, out_path: str, pad: float = 0.4) -> str:
+    """Put speech on a silent clip. The video is frozen on its last frame if the speech is longer,
+    and cut if it is shorter, so the shot always lasts speech + a short pause."""
+    import subprocess
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", audio],
+                               capture_output=True, text=True, check=True).stdout) + pad
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", video, "-i", audio,
+                    "-filter_complex", f"[0:v]tpad=stop_mode=clone:stop_duration={dur:.2f}[v];[1:a]apad[a]",
+                    "-map", "[v]", "-map", "[a]", "-t", f"{dur:.2f}", "-c:v", "libx264", "-crf", "18",
+                    "-pix_fmt", "yuv420p", "-c:a", "aac", out_path], check=True)
+    return out_path
