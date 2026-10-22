@@ -1,0 +1,78 @@
+name: LTX video with dialogue (fal.ai)
+
+on:
+  # من الجوال: افتح Issue عنوانه يبدأ بـ ltx ونصه السيناريو، أو Actions ← Run workflow
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "السيناريو (اتركه فارغاً لاستخدام studio-gen/story.txt)"
+        required: false
+        type: string
+      max_shots:
+        description: "عدد اللقطات (0 = الكل). ابدأ بـ 1 للتجربة"
+        default: "1"
+      resolution:
+        type: choice
+        options: ["720p", "1080p"]
+        default: "720p"
+      dry_run:
+        description: "تقدير التكلفة فقط دون توليد"
+        type: boolean
+        default: true
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  ltx:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.issue.user.login == github.repository_owner &&
+       startsWith(github.event.issue.title, 'ltx'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Prepare script
+        env:
+          INPUT_SCRIPT: ${{ github.event.inputs.script }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          mkdir -p out
+          if [ "${{ github.event_name }}" = "issues" ]; then printf '%s\n' "$ISSUE_BODY" > out/story.txt
+          elif [ -n "$INPUT_SCRIPT" ]; then printf '%s\n' "$INPUT_SCRIPT" > out/story.txt
+          else cp studio-gen/story.txt out/story.txt; fi
+      - name: Generate
+        working-directory: studio-gen
+        env:
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          MAX_SHOTS: ${{ github.event.inputs.max_shots }}
+          RES: ${{ github.event.inputs.resolution }}
+          DRY: ${{ github.event_name == 'issues' && 'false' || github.event.inputs.dry_run }}
+        run: |
+          EXTRA=""
+          [ "$DRY" = "true" ] && EXTRA="--dry-run"
+          python -m studiogen.cli render ../out/story.txt -c characters.json --backend fal \
+            --resolution "${RES:-720p}" --max-shots "${MAX_SHOTS:-1}" \
+            --out-dir ../out/clips --final ../out/final.mp4 $EXTRA 2>&1 | tee ../out/log.txt
+      - name: Publish release
+        if: ${{ hashFiles('out/final.mp4') != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="ltx-$(date +%Y%m%d-%H%M%S)"
+          gh release create "$TAG" out/final.mp4 --title "$TAG" --notes "LTX-2.5 video with dialogue"
+          echo "URL=$(gh release view "$TAG" --json url -q .url)" >> "$GITHUB_ENV"
+      - name: Comment on issue
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          MSG="$(tail -n 5 out/log.txt)"
+          gh issue comment "${{ github.event.issue.number }}" --body "${URL:-فشل التوليد، راجع تبويب Actions}"$'\n\n'"$MSG"

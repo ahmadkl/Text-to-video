@@ -10,7 +10,7 @@ import argparse
 import json
 from pathlib import Path
 
-from . import comfy_backend, ltx_backend, prompts, screenplay, stitch
+from . import api_backend, comfy_backend, fal_backend, ltx_backend, prompts, screenplay, stitch
 
 
 def _load(args):
@@ -46,20 +46,43 @@ def cmd_portraits(args):
 
 def cmd_render(args):
     chars, style, scenes = _load(args)
+    use_api = args.backend == "api"
+    use_fal = args.backend == "fal"
+    fcfg = fal_backend.FalConfig(resolution=args.resolution, aspect_ratio="16:9" if args.landscape else "9:16")
+    acfg = api_backend.APIConfig(model=args.api_model, tier=args.resolution, portrait=not args.landscape)
     cfg = ltx_backend.LTXConfig(ltx_repo=args.ltx_repo, models_dir=args.models_dir)
+    if use_api or use_fal:
+        w, h = map(int, acfg.resolution.split("x"))  # same sizes as the hosted LTX tiers
+        cfg.width, cfg.height = w, h
+    shots = [(sc, sh) for sc in scenes for sh in sc.shots]
+    if args.max_shots:
+        shots = shots[:args.max_shots]
+    if use_api:
+        total = sum(acfg.cost(acfg.duration_for(sh.seconds)) for _, sh in shots)
+        print(f"{len(shots)} shots, estimated cost ~${total:.2f} ({acfg.model}, {acfg.resolution})")
+    elif use_fal:
+        total = fal_backend.estimate_cost([fal_backend.pick_duration(sh.seconds) for _, sh in shots], fcfg.resolution)
+        print(f"{len(shots)} shots, estimated cost ~${total:.2f} (fal.ai, {fcfg.resolution})")
     clips = []
-    for sc in scenes:
-        for sh in sc.shots:
-            out = f"{args.out_dir}/s{sc.number:02d}_{sh.index:02d}.mp4"
-            ref = chars[sh.speaker].reference_image if sh.speaker in chars else None
-            if ref is None and sh.speaker:
-                cand = Path(args.portraits) / f"{sh.speaker}.png"
-                ref = str(cand.resolve()) if cand.exists() else None
-            if not Path(out).exists() or args.dry_run:  # resume: skip finished shots
-                ltx_backend.generate_shot(cfg, prompts.shot_prompt(sh, chars, style, args.setting_en),
-                                          str(Path(out).resolve()), sh.num_frames,
-                                          seed=args.seed + sh.index, image=ref, dry_run=args.dry_run)
-            clips.append(out)
+    for sc, sh in shots:
+        out = f"{args.out_dir}/s{sc.number:02d}_{sh.index:02d}.mp4"
+        prompt = prompts.shot_prompt(sh, chars, style, args.setting_en)
+        if args.dry_run:
+            print(f"[{sc.number}.{sh.index}] {sh.speaker}: {prompt[:160]}...")
+        elif not Path(out).exists():  # resume: skip finished shots
+            if use_api:
+                api_backend.generate_shot(acfg, prompt, out, sh.seconds)
+            elif use_fal:
+                fal_backend.generate_shot(fcfg, prompt, sh.seconds, out)
+            else:
+                ref = chars[sh.speaker].reference_image if sh.speaker in chars else None
+                if ref is None and sh.speaker:
+                    cand = Path(args.portraits) / f"{sh.speaker}.png"
+                    ref = str(cand.resolve()) if cand.exists() else None
+                ltx_backend.generate_shot(cfg, prompt, str(Path(out).resolve()), sh.num_frames,
+                                          seed=args.seed + sh.index, image=ref)
+            print("done:", out, flush=True)
+        clips.append(out)
     if not args.dry_run:
         print("final:", stitch.concat(clips, args.final, cfg.width, cfg.height, cfg.fps))
 
@@ -77,6 +100,11 @@ def main():
     p.add_argument("--setting-en", default=""); p.add_argument("--portraits", default="portraits")
     p.add_argument("--out-dir", default="clips"); p.add_argument("--final", default="final.mp4")
     p.add_argument("--seed", type=int, default=42); p.add_argument("--dry-run", action="store_true")
+    p.add_argument("--backend", choices=["local", "api", "fal"], default="local",
+                   help="local = your GPU; api = api.ltx.io (LTX_API_KEY); fal = fal.ai (FAL_KEY)")
+    p.add_argument("--api-model", default="ltx-2-5-fast")
+    p.add_argument("--resolution", default="720p", help="720p or 1080p (api / fal backends)")
+    p.add_argument("--landscape", action="store_true"); p.add_argument("--max-shots", type=int, default=0)
     p.set_defaults(f=cmd_render)
     a = ap.parse_args()
     a.f(a)

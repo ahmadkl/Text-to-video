@@ -31,3 +31,8 @@ python -m studiogen.cli render  examples/scene.txt -c examples/characters.json -
 - **العتاد:** النموذج 22B والملفات ~66 جيجا، ومتطلبات VRAM غير مذكورة في المستودع. غالباً يلزم كرت كبير (A100/H100) أو تحويل fp8 مع offload. Colab المجاني (T4) لن يكفي.
 - **المدة:** اللقطة الواحدة حتى ~10 ثوانٍ. الأطول تُبنى بدمج لقطات (الشخصية تُثبَّت بصورة مرجعية في الإطار الأول).
 - **الترخيص:** LTX-2.5 تحت ترخيص LTX Community (راجع `LICENSE-2_x` في مستودعهم) قبل أي استخدام تجاري.
+
+## من الجوال بدون GPU (خدمة سحابية مدفوعة بالثانية)
+- `--backend fal` (مفتاح `FAL_KEY` من fal.ai) أو `--backend api` (مفتاح `LTX_API_KEY` من docs.ltx.io). التكلفة التقريبية 0.09$ للثانية بدقة 720p عمودي، وأقل لقطة 6 ثوانٍ.
+- أضف المفتاح في **Settings ← Secrets and variables ← Actions** باسم `FAL_KEY`، ثم **Actions ← LTX video with dialogue (fal.ai) ← Run workflow**. ابدأ بـ `dry_run` ثم `max_shots=1`.
+- هذا المسار نص فقط (بدون صورة مرجعية)، فثبات الوجوه يعتمد على وصف الشخصية في `characters.json`.
