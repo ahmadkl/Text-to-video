@@ -484,6 +484,10 @@ def main() -> None:
 
     raw = Path(args.file).read_text(encoding="utf-8") if args.file else args.text
     import story_parser
+    import shotlist
+    if shotlist.looks_like_shotlist(raw or ""):
+        raise SystemExit("هذا النص قائمة لقطات جاهزة (فيديو 001 / CHAR / CAM …) وليس قصة. "
+                         "استعمل: python make_shots.py -f الملف -o results/اسم  ثم ولّد كل لقطة في Veo/Flow.")
     if story_parser.looks_like_prompt_pack(raw or "") and not os.environ.get("ALLOW_PROMPT_TEXT"):
         raise SystemExit(
             "هذا النص يبدو أوامر توليد جاهزة (Visual: / Audio: / Use the approved character...) وليس قصة.\n"

@@ -336,6 +336,30 @@ def write_outputs(shots, scenes, narration, cast, out_dir: Path, aspect: str, st
                                                    ensure_ascii=False, indent=1), encoding="utf-8")
 
 
+def from_shotlist(raw: str, out_dir: Path, aspect: str, per_day: int) -> None:
+    """نص جاهز على شكل «فيديو NNN»: كل كتلة لقطة، بلا إعادة تقطيع."""
+    import shotlist
+    shots, cast = shotlist.parse(raw)
+    for s in shots:
+        s["prompt"] = shotlist.prompt(s, aspect=aspect)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    md = ["# حزمة لقطات الفيديو (من قائمة لقطات جاهزة)", "",
+          f"عدد اللقطات: **{len(shots)}** — الأبعاد: **{aspect}**", "",
+          "لكل لقطة: انسخ الأمر إلى Veo/Flow (ويفضّل صورة مرجعية لكل شخصية)، سمِّ الملف `shot_001.mp4` "
+          "بنفس رقمها، وارفعه إلى `clips/`، ثم شغّل **Assemble video**.", "", *day_plan(shots, per_day), "",
+          "## الشخصيات", ""]
+    md += [f"- **{n}**: {d}" for n, d in cast.items()] or ["- (لا أوصاف في النص)"]
+    for s in shots:
+        md += ["", f"### لقطة {s['id']:03d} — {s['code']} — {s['kind']} (~{s['secs']} ث) — `shot_{s['id']:03d}.mp4`",
+               "", "```", s["prompt"], "```"]
+    (out_dir / "shots.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    data = [{"id": s["id"], "scene": s["scene"], "slug": s["slug"], "names": s["names"],
+             "lines": s["lines"], "prompt": s["prompt"]} for s in shots]
+    (out_dir / "shots.json").write_text(json.dumps({"aspect": aspect, "style": shotlist.STYLE, "shots": data},
+                                                   ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"{len(shots)} لقطة | {len(cast)} شخصية → {out_dir}/shots.md")
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description="حزمة لقطات لـ Google Flow / Veo")
     src = p.add_mutually_exclusive_group(required=True)
@@ -348,6 +372,9 @@ def main() -> None:
     args = p.parse_args()
 
     raw = Path(args.file).read_text(encoding="utf-8") if args.file else args.text
+    import shotlist
+    if shotlist.looks_like_shotlist(raw or ""):
+        return from_shotlist(raw, Path(args.output), args.aspect, args.per_day)
     raw = story_parser.normalize(raw or "")
     raw, descs, style_override, locdescs = cn.preprocess(raw)
     beats, decl = mv.parse_screenplay(raw, 400)
