@@ -8,6 +8,10 @@ on:
         description: "احرق الترجمة داخل الفيديو"
         type: boolean
         default: true
+      shots:
+        description: "ملف اللقطات الذي تؤخذ منه الترجمة"
+        type: string
+        default: "results/scene1/shots.json"
   # أو يعمل تلقائيًا عند رفع/تعديل ملفات داخل clips/
   push:
     paths: ["clips/**"]
@@ -34,10 +38,11 @@ jobs:
       - name: Assemble
         env:
           BURN: ${{ github.event.inputs.burn }}
+          SHOTS: ${{ github.event.inputs.shots }}
         run: |
           FLAG="--burn"
           if [ "$BURN" = "false" ]; then FLAG=""; fi
-          python assemble.py -c clips -s shots/shots.json -o output/final.mp4 $FLAG
+          python assemble.py -c clips -s "${SHOTS:-results/scene1/shots.json}" -o output/final.mp4 $FLAG
 
       - uses: actions/upload-artifact@v4
         with:
