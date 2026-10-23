@@ -13,6 +13,10 @@ on:
         type: choice
         options: ["9:16", "16:9"]
         default: "9:16"
+      per_day:
+        description: "كم لقطة تسمح بها حصتك المجانية يوميًا (0 = بدون جدول أيام)"
+        type: string
+        default: "0"
   issues:
     types: [opened]
 
@@ -51,7 +55,8 @@ jobs:
       - name: Build shot pack
         env:
           ASPECT: ${{ github.event.inputs.aspect }}
-        run: python make_shots.py -f output/story.txt -o shots --aspect "${ASPECT:-9:16}"
+          PER_DAY: ${{ github.event.inputs.per_day }}
+        run: python make_shots.py -f output/story.txt -o shots --aspect "${ASPECT:-9:16}" --per-day "${PER_DAY:-0}"
 
       - name: Commit shots
         run: |

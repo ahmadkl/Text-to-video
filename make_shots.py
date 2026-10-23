@@ -281,7 +281,23 @@ def shot_prompt(s: dict, cast: dict, style: str, aspect: str) -> str:
     return "\n".join(out)
 
 
-def write_outputs(shots, scenes, narration, cast, out_dir: Path, aspect: str, style: str) -> None:
+def day_plan(shots, per_day: int) -> list[str]:
+    """جدول أيام لمن حصته المجانية محدودة: كم لقطة كل يوم وما يُنجز أولًا."""
+    if per_day <= 0 or not shots:
+        return []
+    out = ["## خطة الأيام (حسب حصتك المجانية)", "", f"حصتك: **{per_day}** لقطة في اليوم.", "",
+           "| اليوم | اللقطات | علامة |", "|---|---|---|"]
+    n = len(shots)
+    for d, start in enumerate(range(0, n, per_day), 1):
+        end = min(start + per_day, n)
+        out.append(f"| {d} | {shots[start]['id']:03d} – {shots[end - 1]['id']:03d} | ☐ |")
+    days = -(-n // per_day)
+    out += ["", f"المجموع {n} لقطة = **{days}** يومًا. اللقطات متسلسلة، فيمكن رفع ما أنجزته كل يوم إلى `clips/` "
+            "وتشغيل التجميع لاحقًا؛ اللقطات الناقصة تُتخطى ويُذكر رقمها."]
+    return out
+
+
+def write_outputs(shots, scenes, narration, cast, out_dir: Path, aspect: str, style: str, per_day: int = 0) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     total = len(shots)
     md = ["# حزمة لقطات الفيديو", "",
@@ -295,6 +311,7 @@ def write_outputs(shots, scenes, narration, cast, out_dir: Path, aspect: str, st
           "3. **سمِّ الملف** عند التنزيل `shot_001.mp4` ثم `shot_002.mp4`… بنفس رقم اللقطة.",
           "4. **ارفع المقاطع** إلى مجلد `clips/` في المستودع، ثم شغّل **Actions ← Assemble video**: "
           "يجمعها بالترتيب مع الترجمة في فيديو واحد.",
+          "", *day_plan(shots, per_day),
           "", "> راجع الحوار قبل التوليد: الاستخراج تلقائي وقد يخلط أحيانًا بين كلام المتحدث ووصف الحركة. "
           "عدّل النص هنا كما تشاء قبل نسخه.", "",
           "## الشخصيات", "", "| الاسم | الوصف (للصورة المرجعية) | الصوت |", "|---|---|---|"]
@@ -327,6 +344,7 @@ def main() -> None:
     p.add_argument("-o", "--output", default="shots")
     p.add_argument("--aspect", choices=["9:16", "16:9"], default="9:16")
     p.add_argument("--look", choices=["realistic", "anime"], default="realistic")
+    p.add_argument("--per-day", type=int, default=0, help="عدد اللقطات المسموح بها يوميًا في حصتك المجانية، لتوزيعها على أيام")
     args = p.parse_args()
 
     raw = Path(args.file).read_text(encoding="utf-8") if args.file else args.text
@@ -339,7 +357,7 @@ def main() -> None:
         "anime": cn.LOOKS["anime"]}[args.look]
     cast = build_cast_all(beats, decl, descs)
     shots, scenes, narration = plan(beats, cast, locdescs, style, args.aspect)
-    write_outputs(shots, scenes, narration, cast, Path(args.output), args.aspect, style)
+    write_outputs(shots, scenes, narration, cast, Path(args.output), args.aspect, style, args.per_day)
     print(f"{len(shots)} لقطة | {len(cast)} شخصية | {len(scenes)} مشهد → {args.output}/shots.md")
 
 
