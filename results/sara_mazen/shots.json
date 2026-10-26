@@ -1,0 +1,368 @@
+{
+ "aspect": "16:9",
+ "style": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin",
+ "shots": [
+  {
+   "id": 1,
+   "scene": 1,
+   "slug": "داخلي — شقة سارة ومازن — صباحًا",
+   "names": [
+    "SARA",
+    "ADAM",
+    "LAYAN"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Cramped cluttered apartment interior, messy children's toys scattered on the floor, pale cold grey morning light filtering through a narrow kitchen window, small wooden table by the window with a smartphone resting at its edge.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — struggling, holding a crying toddler on one arm), ADAM (3-year-old boy with messy dark curls, blue star pajamas — sitting at the small table, eating), LAYAN (toddler girl about 18 months old, tiny tuft of dark hair, pink sleepsuit — crying in Sara's arm).\nShot: Wide angle establishing shot, 35mm lens look, slight handheld drift.\nCamera and action: Sara stands in the center, struggling to hold the crying toddler on one arm while spooning food to Adam with the other hand. The phone on the table rings sharply, its screen lighting the table edge. Sara looks at it in fear, then at the children, and does not answer. It rings again.\nTiming: 0–2s wide view, Sara struggling with both children; 2–4s phone rings, Sara's fearful glance at it and then at the children; 4–6s it rings a second time, she still does not answer.\nNo one speaks in this shot.\nAudio: Sharp phone ring twice, toddler crying, faint fridge hum, muffled street noise outside. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 2,
+   "scene": 1,
+   "slug": "داخلي — شقة سارة ومازن — صباحًا",
+   "names": [
+    "SARA",
+    "LAYAN"
+   ],
+   "lines": [
+    {
+     "speaker": "سارة",
+     "text": "اصبرا قليلًا... سأعدّ لكما شيئًا بعد أن تناما."
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Same cramped apartment, close beside the narrow kitchen window, pale cold grey light on Sara's face, blurred toys in the background.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — rocking the toddler, trembling), LAYAN (toddler girl about 18 months old, tiny tuft of dark hair, pink sleepsuit — whimpering at the edge of frame).\nShot: Medium close-up on Sara, shallow depth of field.\nCamera and action: Slow push-in. Sara looks down at the children, then speaks in a hoarse, trembling voice, barely above a whisper, and exhales with exhaustion.\nTiming: 0–1s she looks down at the children; 1–5s she speaks, voice trembling; 5–6s she exhales and closes her eyes briefly.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nسارة: \"اصبرا قليلًا... سأعدّ لكما شيئًا بعد أن تناما.\"\nAudio: Her hoarse voice, the toddler's whimper, faint fridge hum. The phone has stopped ringing.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 3,
+   "scene": 1,
+   "slug": "داخلي — شقة سارة ومازن — صباحًا",
+   "names": [
+    "ADAM",
+    "SARA",
+    "LAYAN"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Same cluttered apartment floor, scattered plastic toys, pale cold morning light from the narrow window.\nCharacters (keep their look identical in every shot): ADAM (3-year-old boy with messy dark curls, blue star pajamas — tripping over a toy), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — rushing to him), LAYAN (toddler girl about 18 months old, tiny tuft of dark hair, pink sleepsuit — crying louder in Sara's arm).\nShot: Low-angle floor-level medium shot, slight handheld.\nCamera and action: Adam stumbles over a plastic toy and drops onto the rug. Sara hurries to him with the toddler on her arm; Layan cries louder. Sara kneels beside Adam, checking him, her face tight with despair.\nTiming: 0–2s Adam trips over the toy; 2–4s Sara rushes over as Layan cries louder; 4–6s Sara kneels beside Adam, exhausted.\nNo one speaks in this shot.\nAudio: Plastic toy clatter, Adam's small startled cry, Layan wailing, Sara's quick breathing. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 4,
+   "scene": 1,
+   "slug": "داخلي — شقة سارة ومازن — صباحًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 4 seconds.\nLocation: Same apartment, tight on Sara's face, pale cold grey light, blurred children and toys behind her.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — any spark of hope going out of her face).\nShot: Close-up, shallow depth of field.\nCamera and action: Static. Sara's expression slowly drains from tired effort to hollow despair, eyes dropping and losing focus.\nTiming: 0–2s tired effort on her face; 2–4s the last glimmer of hope fades from her eyes.\nNo one speaks in this shot.\nAudio: Distant crying fading into room tone, low fridge hum. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 5,
+   "scene": 1,
+   "slug": "داخلي — شقة سارة ومازن — صباحًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 4 seconds.\nLocation: Edge of the small wooden table by the narrow window, pale cold grey morning light, the smartphone resting on the wood.\nCharacters (keep their look identical in every shot): SARA (only her hand enters the frame — pale thin hand, worn grey sleeve).\nShot: Insert close-up of the phone, shallow depth of field.\nCamera and action: The phone screen lights up with a new message notification from Mazen (message text not legible on screen; the message is added later in editing: الدوام يبدأ الليلة. سأعود بعد أسبوع). Sara's hand slowly enters the frame and rests near the phone without touching it.\nTiming: 0–1s phone at rest; 1–2s screen lights up with the message; 2–4s Sara's hand slowly enters and hovers.\nNo one speaks in this shot.\nAudio: Soft message chime, faint fridge hum, children's muffled voices far behind. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 6,
+   "scene": 1,
+   "slug": "داخلي — شقة سارة ومازن — صباحًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Same apartment, Sara at the small wooden table, pale cold grey light, cold glow from the phone on her face.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — staring at the phone, numb).\nShot: Medium close-up, shallow depth of field.\nCamera and action: Static. Sara stares at the phone for a long moment without moving. Then her thumb presses the side button, the screen goes dark, and the room looks even greyer.\nTiming: 0–1s she reads the message; 1–4s long still stare; 4–5s thumb presses the button, screen goes dark; 5–6s hold on her face in the dimmer light.\nNo one speaks in this shot.\nAudio: Silence except fridge hum and a toddler's distant whimper. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 7,
+   "scene": 2,
+   "slug": "داخلي — الشقة نفسها — ليلًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Pitch-dark apartment room at night, the only light a cold bright blue glow from a phone screen, two sleeping children as soft blurred shapes in the corner of the background.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — on a video call, forcing a confident look).\nShot: Extreme close-up, cinematic chiaroscuro lighting, shallow depth of field.\nCamera and action: Static, very slow push-in. Sara's face lit only by the cold blue screen glow. She tries a tight confident smile, but her eyes betray deep exhaustion.\nTiming: 0–2s face emerges in the blue glow; 2–4s she forces a confident smile; 4–6s the smile slips, her eyes give away her fatigue.\nNo one speaks in this shot.\nAudio: Low room tone, faint video-call connection chime, slow breathing of sleeping children. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 8,
+   "scene": 2,
+   "slug": "داخلي — الشقة نفسها — ليلًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "نديم",
+     "text": "ابتسمي. كلما بقيتِ متصلة، زادت العملات التي أرسلها لكِ."
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Same dark room, only the cold blue phone glow on her face, children asleep in the blurred corner.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — listening, forcing a smile).\nShot: Extreme close-up on Sara, chiaroscuro lighting, shallow depth of field.\nCamera and action: Static. Nadeem is never seen: his calm, quiet, suspicious adult male voice comes from the phone speaker. Sara listens and obeys, forcing a smile while her eyes stay tired.\nTiming: 0–1s Sara waits; 1–5s Nadeem speaks over her face; 5–6s she complies with a forced smile.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nنديم: \"ابتسمي. كلما بقيتِ متصلة، زادت العملات التي أرسلها لكِ.\"\nAudio: Nadeem's voice through the phone speaker, slightly compressed; low room tone. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 9,
+   "scene": 2,
+   "slug": "داخلي — الشقة نفسها — ليلًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "سارة",
+     "text": "إنها ليلة واحدة فقط. أحتاج إلى ما يكفي للحليب وبعض الدواء."
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 8 seconds.\nLocation: Same dark room, cold blue phone glow on her face, children asleep in the blurred corner.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — whispering, cautious).\nShot: Extreme close-up on Sara, chiaroscuro lighting, shallow depth of field.\nCamera and action: Static. She glances briefly toward the children, then speaks in a very cautious whisper, eyes fixed on the screen.\nTiming: 0–1s she glances at the children; 1–7s she whispers the line; 7–8s she waits, jaw tense.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nسارة: \"إنها ليلة واحدة فقط. أحتاج إلى ما يكفي للحليب وبعض الدواء.\"\nAudio: Her whisper, low room tone, a child shifting in sleep. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 10,
+   "scene": 2,
+   "slug": "داخلي — الشقة نفسها — ليلًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Same dark room, cold blue phone glow, sleeping children as soft shapes in the corner.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — turning toward the children).\nShot: Close-up on Sara's face with the phone glow, shallow depth of field.\nCamera and action: Digital coins arrive inside the app on the phone screen (icons only, no readable text); the blue glow pulses twice. Sara turns her head toward the sleeping children, then looks back at the screen and lowers her head and her voice.\nTiming: 0–1s first ding, glow pulses; 1–2s second ding; 2–4s she turns toward the children; 4–6s she turns back and lowers her head.\nNo one speaks in this shot.\nAudio: Two short digital ding tones, one after the other; low room tone. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 11,
+   "scene": 2,
+   "slug": "داخلي — الشقة نفسها — ليلًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "نديم",
+     "text": "أنتِ وحدك في البيت؟"
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Same dark room, only the cold blue phone glow on her face.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — freezing).\nShot: Extreme close-up on Sara's eyes and face, chiaroscuro lighting.\nCamera and action: Static. Nadeem is never seen: his calm, quiet, suspicious adult male voice comes from the phone speaker. Sara freezes; her eyes flicker toward the dark room behind her.\nTiming: 0–1s tense pause; 1–3s Nadeem asks; 3–6s Sara freezes, eyes flicker to the dark.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nنديم: \"أنتِ وحدك في البيت؟\"\nAudio: Nadeem's voice through the phone speaker; low room tone. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 12,
+   "scene": 2,
+   "slug": "داخلي — الشقة نفسها — ليلًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "سارة",
+     "text": "أنا والطفلان."
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 8 seconds.\nLocation: Same dark room at night, a bare wall behind Sara, cold blue phone glow on her face.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — hesitating, then whispering).\nShot: Close-up on Sara with the wall behind her.\nCamera and action: Static. She hesitates. Headlights of a passing car outside sweep across the wall behind her, shadows sliding. Then she lowers her voice and answers.\nTiming: 0–3s she hesitates, jaw tight; 3–5s headlights sweep across the wall; 5–7s she whispers the answer; 7–8s she holds still.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nسارة: \"أنا والطفلان.\"\nAudio: Car passing outside, tires on wet road; her whisper; low room tone. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 13,
+   "scene": 2,
+   "slug": "داخلي — الشقة نفسها — ليلًا",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Pitch-dark room, the black glass of the phone screen after the call drops, Sara's face reflected on it.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, dark circles under her eyes — seen only as a faint reflection in the black phone screen).\nShot: Extreme close-up of the black screen with her reflection, very shallow depth of field.\nCamera and action: The blue glow cuts out suddenly. Sara's reflection stays on the black glass, ghostly, as if it were someone else watching her. Very slow push-in on the reflection.\nTiming: 0–1s blue glow cuts out; 1–4s her reflection hangs in the black glass; 4–6s slow push-in, the reflection feels like another person.\nNo one speaks in this shot.\nAudio: Abrupt call-disconnect tone, then near silence with only faint room tone.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 14,
+   "scene": 3,
+   "slug": "داخلي — الشقة — مساء اليوم السابع",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Dim apartment at night, faint trembling light flickering from the hallway, the table with the phone, sleeping children as soft shapes in the background.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — startled, hiding the phone).\nShot: Medium cinematic shot, tense, realistic lighting.\nCamera and action: Sara sits at the table with the phone glowing. A key turns in the front door lock, earlier than expected. She flinches, hurriedly closes the app, but the last video-call image stays on the screen a moment too long before it goes dark.\nTiming: 0–2s Sara at the table in the glow; 2–3s the key turns in the lock; 3–5s she flinches and closes the app; 5–6s the last call image lingers, then the screen goes dark.\nNo one speaks in this shot.\nAudio: Key turning in the lock, deadbolt clack, buzz of the flickering hallway light. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 15,
+   "scene": 3,
+   "slug": "داخلي — الشقة — مساء اليوم السابع",
+   "names": [
+    "MAZEN",
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Dim apartment entrance and living area at night, trembling hallway light behind him.\nCharacters (keep their look identical in every shot): MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket — carrying a work bag, travel bags beside him), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — frozen at the table).\nShot: Low-angle medium shot.\nCamera and action: Mazen enters carrying his work bag. He sets it on the floor, then stares fixedly at the phone on the table. Sara sits frozen at the edge of the frame.\nTiming: 0–2s Mazen enters; 2–4s he sets the bag on the floor; 4–6s he stares at the phone.\nNo one speaks in this shot.\nAudio: Door closing, bag set down heavily, trembling hallway light buzz, heavy silence. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 16,
+   "scene": 3,
+   "slug": "داخلي — الشقة — مساء اليوم السابع",
+   "names": [
+    "MAZEN",
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "مازن",
+     "text": "من كان معك؟"
+    },
+    {
+     "speaker": "سارة",
+     "text": "لا أحد. كنت أبحث عن عمل."
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 8 seconds.\nLocation: Dim apartment at night, bags on the floor, faint trembling hallway light.\nCharacters (keep their look identical in every shot): MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket, travel bags on the floor — furious, glaring), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — terrified, trembling hands, backing away slowly).\nShot: Medium shot, low-angle framing, tense dramatic mood, realistic cinematic lighting.\nCamera and action: Static low angle. Mazen glares and asks in a hoarse, sharp voice. Sara answers in a trembling voice while backing away slowly with a defensive posture.\nTiming: 0–1s Mazen glares; 1–3s Mazen asks; 3–7s Sara answers while backing away; 7–8s silence between them.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nمازن: \"من كان معك؟\"\nسارة: \"لا أحد. كنت أبحث عن عمل.\"\nAudio: Mazen's rough voice, Sara's trembling voice, hallway light buzz, no music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 17,
+   "scene": 3,
+   "slug": "داخلي — الشقة — مساء اليوم السابع",
+   "names": [
+    "MAZEN",
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Dim apartment at night, two children sleeping in the corner, faint trembling hallway light.\nCharacters (keep their look identical in every shot): MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket — looking from the children back to her), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — afraid, still).\nShot: Medium two-shot, low angle.\nCamera and action: Static. Mazen turns his head toward the sleeping children, then back to Sara. The silence between them feels heavier than the room.\nTiming: 0–2s Mazen looks at the sleeping children; 2–4s his gaze returns to Sara; 4–6s long loaded silence.\nNo one speaks in this shot.\nAudio: Children's slow breathing, hallway light buzz, heavy silence. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 18,
+   "scene": 3,
+   "slug": "داخلي — الشقة — مساء اليوم السابع",
+   "names": [
+    "MAZEN",
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "مازن",
+     "text": "عمل؟ هكذا تسمين هذا؟"
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Dim apartment at night, sleeping children in the corner.\nCharacters (keep their look identical in every shot): MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket — contemptuous), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — stepping back, keeping quiet so the children do not wake).\nShot: Medium shot, low angle.\nCamera and action: Static. Mazen speaks with scornful, hoarse emphasis. Sara takes one step back and does not raise her voice so the children will not wake up.\nTiming: 0–1s Mazen turns on her; 1–3s he speaks; 3–6s Sara steps back, hands trembling.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nمازن: \"عمل؟ هكذا تسمين هذا؟\"\nAudio: Mazen's voice, hallway light buzz, children's soft breathing. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 19,
+   "scene": 3,
+   "slug": "داخلي — الشقة — مساء اليوم السابع",
+   "names": [
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "سارة",
+     "text": "كنت أحاول أن أؤمّن لهما الطعام. لم أفعل شيئًا يبرر ما ستفعله الآن."
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 8 seconds.\nLocation: Dim apartment at night, hallway light trembling behind her.\nCharacters (keep their look identical in every shot): SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — frightened but firm, voice kept low).\nShot: Medium close-up on Sara, slightly low angle.\nCamera and action: Static. She speaks in a low trembling voice, holding her ground even while shaking, glancing once toward the sleeping children.\nTiming: 0–1s she glances at the children; 1–7s she speaks; 7–8s she holds Mazen's gaze.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nسارة: \"كنت أحاول أن أؤمّن لهما الطعام. لم أفعل شيئًا يبرر ما ستفعله الآن.\"\nAudio: Her low voice, hallway light buzz, children breathing. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 20,
+   "scene": 3,
+   "slug": "داخلي — الشقة — مساء اليوم السابع",
+   "names": [
+    "MAZEN",
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Dim apartment at night, the phone lying near the table edge.\nCharacters (keep their look identical in every shot): MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket — gripping her wrist), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — trying to pull free).\nShot: Low-angle medium shot, then the phone falls.\nCamera and action: Mazen grabs Sara by the wrist; she tries to pull free. The phone slips and drops to the floor and keeps recording from a low angle on the floor, showing only their feet and the dark hallway. No blows are shown.\nTiming: 0–2s he grabs her wrist; 2–3s she tries to free herself; 3–4s the phone drops; 4–6s floor-level view of feet and the dark hallway.\nNo one speaks in this shot.\nAudio: Struggle and cloth rustle, phone clattering on the floor, sharp breaths, hallway light buzz. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 21,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Dimly lit apartment hallway looking into a dark kitchen entrance, dark shadows, fridge light barely glowing, tiled floor, children's toys at the edge of the frame.\nCharacters (keep their look identical in every shot): لا أحد ظاهر في الصورة (no person visible in the shot).\nShot: Static cinematic shot, low angle from the hallway, psychological thriller aesthetic, high contrast.\nCamera and action: Completely static. Nobody is seen. The hallway light flickers once. The violence happens off-screen: only sounds tell what is happening.\nTiming: 0–2s still empty frame, fridge hum; 2–3s door slams violently; 3–4s muffled impact; 4–6s Adam suddenly starts crying.\nNo one speaks in this shot.\nAudio: A door slams violently off-screen, a dull muffled impact, then Adam's sudden crying; steady fridge hum underneath. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 22,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [
+    "MAZEN"
+   ],
+   "lines": [
+    {
+     "speaker": "مازن",
+     "text": "أنتِ ملكي. هل فهمتِ؟"
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Same dark kitchen entrance, deep shadows, faint cold fridge glow on the tile floor.\nCharacters (keep their look identical in every shot): MAZEN (muscular man, only a dark silhouette deep inside the darkness — voice hissing, face not visible).\nShot: Static low-angle shot, high contrast.\nCamera and action: Static. A dark silhouette is barely visible in the black of the room; Mazen's voice hisses from the darkness. He does not move into the light.\nTiming: 0–2s still darkness, silhouette barely visible; 2–5s he speaks; 5–6s silence and hum.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nمازن: \"أنتِ ملكي. هل فهمتِ؟\"\nAudio: His hissing voice from the dark, fridge hum, Adam's crying in the distance. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 23,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [
+    "SARA",
+    "MAZEN"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 8 seconds.\nLocation: The dark kitchen entrance and the living area beyond, moody shadows, high contrast.\nCharacters (keep their look identical in every shot): SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — hand over her face, wide shocked eyes), MAZEN (muscular man in his early 30s, short black hair, dark work jacket — dark angry figure advancing).\nShot: Static low-angle shot from the hallway, psychological thriller aesthetic.\nCamera and action: Sara appears at the kitchen entrance with her hand over her face. Mazen steps toward her, angry, and his dark figure grows until it fills the frame. No contact or violence is shown.\nTiming: 0–2s Sara appears at the doorway, hand on her face; 2–6s Mazen advances and his figure grows; 6–8s his dark shape fills the frame.\nNo one speaks in this shot.\nAudio: Heavy footsteps on tile, fridge hum, Adam sobbing faintly, Sara's shaky breathing. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 24,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Edge of the kitchen counter in the dark, a knife handle at its edge, cold dim light.\nCharacters (keep their look identical in every shot): يد سارة فقط (Sara's hand only — pale thin trembling hand, worn grey sleeve).\nShot: Extreme close-up of the hand, high contrast, very shallow depth of field.\nCamera and action: Sara's trembling hand reaches backward searching for anything to stop him; her fingertips touch the handle of a knife. Static camera, nothing else is shown.\nTiming: 0–2s hand reaches back, trembling; 2–4s fingertips find the cold edge; 4–6s fingers touch the handle.\nNo one speaks in this shot.\nAudio: Her shaky breath, fridge hum, a fingertip scraping metal. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 25,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "سارة",
+     "text": "ابتعد عني... أرجوك."
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Dark kitchen entrance, deep shadows, cold dim light on one side of her face.\nCharacters (keep their look identical in every shot): SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — broken, pleading).\nShot: Close-up on Sara, high contrast, shallow depth of field.\nCamera and action: Static. Her eyes are wet and her voice cracks as she begs, face lit from one side only.\nTiming: 0–2s trembling breath; 2–4s she speaks; 4–6s silence, eyes shut.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nسارة: \"ابتعد عني... أرجوك.\"\nAudio: Her broken voice, fridge hum, a child's faint cry. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 26,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 8 seconds.\nLocation: Static low-angle shot from the hallway into the dark kitchen, tile floor catching a faint cold glint, nobody visible.\nCharacters (keep their look identical in every shot): لا أحد ظاهر في الصورة (no person visible in the shot).\nShot: Static, psychological thriller aesthetic, high contrast.\nCamera and action: Completely static. A moment of silence. Then a short cry off-screen and a metallic sound falling onto tile. All sounds stop at once, leaving only the fridge hum and Layan crying from another room.\nTiming: 0–2s silence; 2–3s short cry; 3–4s metallic clatter on the tile; 4–8s everything stops, only fridge hum and distant crying.\nNo one speaks in this shot.\nAudio: One beat of silence, a short off-screen cry, metallic object clattering on tile, then total silence except fridge hum and Layan's distant crying.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 27,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 4 seconds.\nLocation: Dark kitchen entrance, cold dim light on her eyes.\nCharacters (keep their look identical in every shot): SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes — eyes widening in shock).\nShot: Extreme close-up on Sara's eyes.\nCamera and action: Static. Her eyes slowly widen as the silence settles; no face movement beyond the eyes.\nTiming: 0–2s still eyes; 2–4s they widen slowly.\nNo one speaks in this shot.\nAudio: Fridge hum only, Layan crying faintly far away. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 28,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Kitchen tile floor in the dark, a metallic knife lying on the tiles, a still shadow at the far edge of the frame.\nCharacters (keep their look identical in every shot): يد سارة المرتجفة فقط (only Sara's trembling hand at the edge of the frame).\nShot: Static low-angle shot at floor level, high contrast, photorealistic.\nCamera and action: Completely static. We see only a trembling hand at the edge, the knife on the tile, and a still shadow that does not move.\nTiming: 0–2s knife on the tile; 2–4s hand trembles at the edge of the frame; 4–6s the shadow stays perfectly still.\nNo one speaks in this shot.\nAudio: Fridge hum, Layan crying faintly far away, Sara's shaky breath. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 29,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [
+    "SARA"
+   ],
+   "lines": [
+    {
+     "speaker": "سارة",
+     "text": "مازن؟"
+    }
+   ],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 4 seconds.\nLocation: Dark kitchen entrance, deep shadows, faint cold light.\nCharacters (keep their look identical in every shot): SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes — whispering, voice breaking).\nShot: Close-up on Sara, high contrast.\nCamera and action: Static. She whispers his name in a broken voice and waits for an answer that does not come.\nTiming: 0–1s she holds her breath; 1–2s she whispers his name; 2–4s no answer, only hum.\nDialogue, spoken aloud in natural Syrian (Levantine) Arabic with clear lip-sync; use exactly these words:\nسارة: \"مازن؟\"\nAudio: Her broken whisper, fridge hum, Layan crying in the distance. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  },
+  {
+   "id": 30,
+   "scene": 4,
+   "slug": "داخلي — المطبخ والصالة — متصل",
+   "names": [
+    "SARA"
+   ],
+   "lines": [],
+   "prompt": "Cinematic photorealistic live-action footage from a realistic Syrian TV drama, natural light, 35mm film look, shallow depth of field, realistic faces and skin.\nWidescreen 16:9 landscape frame. Clip length about 6 seconds.\nLocation: Dark kitchen entrance, deep shadows, cold dim light, the tiled floor.\nCharacters (keep their look identical in every shot): SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — approaching slowly, then recoiling).\nShot: Static low-angle medium shot from the hallway.\nCamera and action: Static. There is no answer. Sara walks forward slowly, then recoils as if she hit an invisible wall. The source text ends mid-sentence here, so the clip ends on her recoil.\nTiming: 0–2s silence, she waits; 2–4s she steps forward slowly; 4–6s she recoils.\nNo one speaks in this shot.\nAudio: Slow footsteps on tile, fridge hum, Layan crying faintly, her breath catching. No music.\nNo subtitles, no captions, no on-screen text, no logos."
+  }
+ ]
+}

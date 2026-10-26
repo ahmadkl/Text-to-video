@@ -59,7 +59,8 @@ def parse(raw: str) -> tuple[list[dict], dict[str, str]]:
 
 def prompt(s: dict, style: str = STYLE, aspect: str = "9:16") -> str:
     f = s["f"]
-    out = [f"{style}.", f"Vertical {aspect} frame. Clip length about {s['secs']} seconds."]
+    frame = f"Vertical {aspect} frame." if aspect == "9:16" else f"Widescreen {aspect} landscape frame."
+    out = [f"{style}.", f"{frame} Clip length about {s['secs']} seconds."]
     if f.get("LOC"):
         out.append(f"Location: {f['LOC']}")
     if f.get("CHAR"):

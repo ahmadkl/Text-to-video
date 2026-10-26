@@ -1,0 +1,313 @@
+# قائمة لقطات «سارة ومازن» بصيغة make_shots.py (فيديو NNN — كود — نوع)
+# الأبعاد المقصودة 16:9 كما في برمبتات السيناريو. الحوار نصه حرفيًا من السيناريو.
+# ليان طفلة رضيعة نحو 18 شهرًا وآدم ولد عمره 3 سنوات (افتراض من السيناريو).
+# نديم لا يظهر في الصورة أبدًا: صوته فقط من مكبر الهاتف.
+# لا عنف مباشر على الشاشة في أي لقطة، كما ينص السيناريو.
+
+المشهد 1 — داخلي — شقة سارة ومازن — صباحًا
+
+فيديو 001 — S1-A — تأسيسية
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — struggling, holding a crying toddler on one arm), ADAM (3-year-old boy with messy dark curls, blue star pajamas — sitting at the small table, eating), LAYAN (toddler girl about 18 months old, tiny tuft of dark hair, pink sleepsuit — crying in Sara's arm).
+· LOC: Cramped cluttered apartment interior, messy children's toys scattered on the floor, pale cold grey morning light filtering through a narrow kitchen window, small wooden table by the window with a smartphone resting at its edge.
+· SHOT: Wide angle establishing shot, 35mm lens look, slight handheld drift.
+· CAM: Sara stands in the center, struggling to hold the crying toddler on one arm while spooning food to Adam with the other hand. The phone on the table rings sharply, its screen lighting the table edge. Sara looks at it in fear, then at the children, and does not answer. It rings again.
+· DIALOGUE: —
+· AUDIO: Sharp phone ring twice, toddler crying, faint fridge hum, muffled street noise outside. No music.
+· TIMING: 0–2s wide view, Sara struggling with both children; 2–4s phone rings, Sara's fearful glance at it and then at the children; 4–6s it rings a second time, she still does not answer.
+
+فيديو 002 — S1-B — حوار
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — rocking the toddler, trembling), LAYAN (toddler girl about 18 months old, tiny tuft of dark hair, pink sleepsuit — whimpering at the edge of frame).
+· LOC: Same cramped apartment, close beside the narrow kitchen window, pale cold grey light on Sara's face, blurred toys in the background.
+· SHOT: Medium close-up on Sara, shallow depth of field.
+· CAM: Slow push-in. Sara looks down at the children, then speaks in a hoarse, trembling voice, barely above a whisper, and exhales with exhaustion.
+· DIALOGUE: سارة: «اصبرا قليلًا... سأعدّ لكما شيئًا بعد أن تناما.»
+· AUDIO: Her hoarse voice, the toddler's whimper, faint fridge hum. The phone has stopped ringing.
+· TIMING: 0–1s she looks down at the children; 1–5s she speaks, voice trembling; 5–6s she exhales and closes her eyes briefly.
+
+فيديو 003 — S1-C — حركة
+
+· CHAR: ADAM (3-year-old boy with messy dark curls, blue star pajamas — tripping over a toy), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — rushing to him), LAYAN (toddler girl about 18 months old, tiny tuft of dark hair, pink sleepsuit — crying louder in Sara's arm).
+· LOC: Same cluttered apartment floor, scattered plastic toys, pale cold morning light from the narrow window.
+· SHOT: Low-angle floor-level medium shot, slight handheld.
+· CAM: Adam stumbles over a plastic toy and drops onto the rug. Sara hurries to him with the toddler on her arm; Layan cries louder. Sara kneels beside Adam, checking him, her face tight with despair.
+· DIALOGUE: —
+· AUDIO: Plastic toy clatter, Adam's small startled cry, Layan wailing, Sara's quick breathing. No music.
+· TIMING: 0–2s Adam trips over the toy; 2–4s Sara rushes over as Layan cries louder; 4–6s Sara kneels beside Adam, exhausted.
+
+فيديو 004 — S1-D — ردّ فعل
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — any spark of hope going out of her face).
+· LOC: Same apartment, tight on Sara's face, pale cold grey light, blurred children and toys behind her.
+· SHOT: Close-up, shallow depth of field.
+· CAM: Static. Sara's expression slowly drains from tired effort to hollow despair, eyes dropping and losing focus.
+· DIALOGUE: —
+· AUDIO: Distant crying fading into room tone, low fridge hum. No music.
+· TIMING: 0–2s tired effort on her face; 2–4s the last glimmer of hope fades from her eyes.
+
+فيديو 005 — S1-E — إدراج
+
+· CHAR: SARA (only her hand enters the frame — pale thin hand, worn grey sleeve).
+· LOC: Edge of the small wooden table by the narrow window, pale cold grey morning light, the smartphone resting on the wood.
+· SHOT: Insert close-up of the phone, shallow depth of field.
+· CAM: The phone screen lights up with a new message notification from Mazen (message text not legible on screen; the message is added later in editing: الدوام يبدأ الليلة. سأعود بعد أسبوع). Sara's hand slowly enters the frame and rests near the phone without touching it.
+· DIALOGUE: —
+· AUDIO: Soft message chime, faint fridge hum, children's muffled voices far behind. No music.
+· TIMING: 0–1s phone at rest; 1–2s screen lights up with the message; 2–4s Sara's hand slowly enters and hovers.
+
+فيديو 006 — S1-F — ردّ فعل
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — staring at the phone, numb).
+· LOC: Same apartment, Sara at the small wooden table, pale cold grey light, cold glow from the phone on her face.
+· SHOT: Medium close-up, shallow depth of field.
+· CAM: Static. Sara stares at the phone for a long moment without moving. Then her thumb presses the side button, the screen goes dark, and the room looks even greyer.
+· DIALOGUE: —
+· AUDIO: Silence except fridge hum and a toddler's distant whimper. No music.
+· TIMING: 0–1s she reads the message; 1–4s long still stare; 4–5s thumb presses the button, screen goes dark; 5–6s hold on her face in the dimmer light.
+
+المشهد 2 — داخلي — الشقة نفسها — ليلًا
+
+فيديو 007 — S2-A — تأسيسية
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — on a video call, forcing a confident look).
+· LOC: Pitch-dark apartment room at night, the only light a cold bright blue glow from a phone screen, two sleeping children as soft blurred shapes in the corner of the background.
+· SHOT: Extreme close-up, cinematic chiaroscuro lighting, shallow depth of field.
+· CAM: Static, very slow push-in. Sara's face lit only by the cold blue screen glow. She tries a tight confident smile, but her eyes betray deep exhaustion.
+· DIALOGUE: —
+· AUDIO: Low room tone, faint video-call connection chime, slow breathing of sleeping children. No music.
+· TIMING: 0–2s face emerges in the blue glow; 2–4s she forces a confident smile; 4–6s the smile slips, her eyes give away her fatigue.
+
+فيديو 008 — S2-B — حوار
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — listening, forcing a smile).
+· LOC: Same dark room, only the cold blue phone glow on her face, children asleep in the blurred corner.
+· SHOT: Extreme close-up on Sara, chiaroscuro lighting, shallow depth of field.
+· CAM: Static. Nadeem is never seen: his calm, quiet, suspicious adult male voice comes from the phone speaker. Sara listens and obeys, forcing a smile while her eyes stay tired.
+· DIALOGUE: نديم: «ابتسمي. كلما بقيتِ متصلة، زادت العملات التي أرسلها لكِ.»
+· AUDIO: Nadeem's voice through the phone speaker, slightly compressed; low room tone. No music.
+· TIMING: 0–1s Sara waits; 1–5s Nadeem speaks over her face; 5–6s she complies with a forced smile.
+
+فيديو 009 — S2-C — حوار
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — whispering, cautious).
+· LOC: Same dark room, cold blue phone glow on her face, children asleep in the blurred corner.
+· SHOT: Extreme close-up on Sara, chiaroscuro lighting, shallow depth of field.
+· CAM: Static. She glances briefly toward the children, then speaks in a very cautious whisper, eyes fixed on the screen.
+· DIALOGUE: سارة: «إنها ليلة واحدة فقط. أحتاج إلى ما يكفي للحليب وبعض الدواء.»
+· AUDIO: Her whisper, low room tone, a child shifting in sleep. No music.
+· TIMING: 0–1s she glances at the children; 1–7s she whispers the line; 7–8s she waits, jaw tense.
+
+فيديو 010 — S2-D — إدراج
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — turning toward the children).
+· LOC: Same dark room, cold blue phone glow, sleeping children as soft shapes in the corner.
+· SHOT: Close-up on Sara's face with the phone glow, shallow depth of field.
+· CAM: Digital coins arrive inside the app on the phone screen (icons only, no readable text); the blue glow pulses twice. Sara turns her head toward the sleeping children, then looks back at the screen and lowers her head and her voice.
+· DIALOGUE: —
+· AUDIO: Two short digital ding tones, one after the other; low room tone. No music.
+· TIMING: 0–1s first ding, glow pulses; 1–2s second ding; 2–4s she turns toward the children; 4–6s she turns back and lowers her head.
+
+فيديو 011 — S2-E — حوار
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — freezing).
+· LOC: Same dark room, only the cold blue phone glow on her face.
+· SHOT: Extreme close-up on Sara's eyes and face, chiaroscuro lighting.
+· CAM: Static. Nadeem is never seen: his calm, quiet, suspicious adult male voice comes from the phone speaker. Sara freezes; her eyes flicker toward the dark room behind her.
+· DIALOGUE: نديم: «أنتِ وحدك في البيت؟»
+· AUDIO: Nadeem's voice through the phone speaker; low room tone. No music.
+· TIMING: 0–1s tense pause; 1–3s Nadeem asks; 3–6s Sara freezes, eyes flicker to the dark.
+
+فيديو 012 — S2-F — حوار وتوتر
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes, worn grey cotton homewear — hesitating, then whispering).
+· LOC: Same dark room at night, a bare wall behind Sara, cold blue phone glow on her face.
+· SHOT: Close-up on Sara with the wall behind her.
+· CAM: Static. She hesitates. Headlights of a passing car outside sweep across the wall behind her, shadows sliding. Then she lowers her voice and answers.
+· DIALOGUE: سارة: «أنا والطفلان.»
+· AUDIO: Car passing outside, tires on wet road; her whisper; low room tone. No music.
+· TIMING: 0–3s she hesitates, jaw tight; 3–5s headlights sweep across the wall; 5–7s she whispers the answer; 7–8s she holds still.
+
+فيديو 013 — S2-G — ختام
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, dark circles under her eyes — seen only as a faint reflection in the black phone screen).
+· LOC: Pitch-dark room, the black glass of the phone screen after the call drops, Sara's face reflected on it.
+· SHOT: Extreme close-up of the black screen with her reflection, very shallow depth of field.
+· CAM: The blue glow cuts out suddenly. Sara's reflection stays on the black glass, ghostly, as if it were someone else watching her. Very slow push-in on the reflection.
+· DIALOGUE: —
+· AUDIO: Abrupt call-disconnect tone, then near silence with only faint room tone.
+· TIMING: 0–1s blue glow cuts out; 1–4s her reflection hangs in the black glass; 4–6s slow push-in, the reflection feels like another person.
+
+المشهد 3 — داخلي — الشقة — مساء اليوم السابع
+
+فيديو 014 — S3-A — تأسيسية
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — startled, hiding the phone).
+· LOC: Dim apartment at night, faint trembling light flickering from the hallway, the table with the phone, sleeping children as soft shapes in the background.
+· SHOT: Medium cinematic shot, tense, realistic lighting.
+· CAM: Sara sits at the table with the phone glowing. A key turns in the front door lock, earlier than expected. She flinches, hurriedly closes the app, but the last video-call image stays on the screen a moment too long before it goes dark.
+· DIALOGUE: —
+· AUDIO: Key turning in the lock, deadbolt clack, buzz of the flickering hallway light. No music.
+· TIMING: 0–2s Sara at the table in the glow; 2–3s the key turns in the lock; 3–5s she flinches and closes the app; 5–6s the last call image lingers, then the screen goes dark.
+
+فيديو 015 — S3-B — دخول
+
+· CHAR: MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket — carrying a work bag, travel bags beside him), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — frozen at the table).
+· LOC: Dim apartment entrance and living area at night, trembling hallway light behind him.
+· SHOT: Low-angle medium shot.
+· CAM: Mazen enters carrying his work bag. He sets it on the floor, then stares fixedly at the phone on the table. Sara sits frozen at the edge of the frame.
+· DIALOGUE: —
+· AUDIO: Door closing, bag set down heavily, trembling hallway light buzz, heavy silence. No music.
+· TIMING: 0–2s Mazen enters; 2–4s he sets the bag on the floor; 4–6s he stares at the phone.
+
+فيديو 016 — S3-C — حوار
+
+· CHAR: MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket, travel bags on the floor — furious, glaring), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — terrified, trembling hands, backing away slowly).
+· LOC: Dim apartment at night, bags on the floor, faint trembling hallway light.
+· SHOT: Medium shot, low-angle framing, tense dramatic mood, realistic cinematic lighting.
+· CAM: Static low angle. Mazen glares and asks in a hoarse, sharp voice. Sara answers in a trembling voice while backing away slowly with a defensive posture.
+· DIALOGUE: مازن: «من كان معك؟» سارة: «لا أحد. كنت أبحث عن عمل.»
+· AUDIO: Mazen's rough voice, Sara's trembling voice, hallway light buzz, no music.
+· TIMING: 0–1s Mazen glares; 1–3s Mazen asks; 3–7s Sara answers while backing away; 7–8s silence between them.
+
+فيديو 017 — S3-D — ردّ فعل
+
+· CHAR: MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket — looking from the children back to her), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — afraid, still).
+· LOC: Dim apartment at night, two children sleeping in the corner, faint trembling hallway light.
+· SHOT: Medium two-shot, low angle.
+· CAM: Static. Mazen turns his head toward the sleeping children, then back to Sara. The silence between them feels heavier than the room.
+· DIALOGUE: —
+· AUDIO: Children's slow breathing, hallway light buzz, heavy silence. No music.
+· TIMING: 0–2s Mazen looks at the sleeping children; 2–4s his gaze returns to Sara; 4–6s long loaded silence.
+
+فيديو 018 — S3-E — حوار
+
+· CHAR: MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket — contemptuous), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — stepping back, keeping quiet so the children do not wake).
+· LOC: Dim apartment at night, sleeping children in the corner.
+· SHOT: Medium shot, low angle.
+· CAM: Static. Mazen speaks with scornful, hoarse emphasis. Sara takes one step back and does not raise her voice so the children will not wake up.
+· DIALOGUE: مازن: «عمل؟ هكذا تسمين هذا؟»
+· AUDIO: Mazen's voice, hallway light buzz, children's soft breathing. No music.
+· TIMING: 0–1s Mazen turns on her; 1–3s he speaks; 3–6s Sara steps back, hands trembling.
+
+فيديو 019 — S3-F — حوار
+
+· CHAR: SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, dark circles under wide fearful eyes, worn grey cotton homewear — frightened but firm, voice kept low).
+· LOC: Dim apartment at night, hallway light trembling behind her.
+· SHOT: Medium close-up on Sara, slightly low angle.
+· CAM: Static. She speaks in a low trembling voice, holding her ground even while shaking, glancing once toward the sleeping children.
+· DIALOGUE: سارة: «كنت أحاول أن أؤمّن لهما الطعام. لم أفعل شيئًا يبرر ما ستفعله الآن.»
+· AUDIO: Her low voice, hallway light buzz, children breathing. No music.
+· TIMING: 0–1s she glances at the children; 1–7s she speaks; 7–8s she holds Mazen's gaze.
+
+فيديو 020 — S3-G — حركة
+
+· CHAR: MAZEN (muscular man in his early 30s, short black hair, harsh angular face with dark stubble, dark work jacket — gripping her wrist), SARA (pale exhausted woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — trying to pull free).
+· LOC: Dim apartment at night, the phone lying near the table edge.
+· SHOT: Low-angle medium shot, then the phone falls.
+· CAM: Mazen grabs Sara by the wrist; she tries to pull free. The phone slips and drops to the floor and keeps recording from a low angle on the floor, showing only their feet and the dark hallway. No blows are shown.
+· DIALOGUE: —
+· AUDIO: Struggle and cloth rustle, phone clattering on the floor, sharp breaths, hallway light buzz. No music.
+· TIMING: 0–2s he grabs her wrist; 2–3s she tries to free herself; 3–4s the phone drops; 4–6s floor-level view of feet and the dark hallway.
+
+المشهد 4 — داخلي — المطبخ والصالة — متصل
+
+فيديو 021 — S4-A — تأسيسية
+
+· CHAR: لا أحد ظاهر في الصورة (no person visible in the shot).
+· LOC: Dimly lit apartment hallway looking into a dark kitchen entrance, dark shadows, fridge light barely glowing, tiled floor, children's toys at the edge of the frame.
+· SHOT: Static cinematic shot, low angle from the hallway, psychological thriller aesthetic, high contrast.
+· CAM: Completely static. Nobody is seen. The hallway light flickers once. The violence happens off-screen: only sounds tell what is happening.
+· DIALOGUE: —
+· AUDIO: A door slams violently off-screen, a dull muffled impact, then Adam's sudden crying; steady fridge hum underneath. No music.
+· TIMING: 0–2s still empty frame, fridge hum; 2–3s door slams violently; 3–4s muffled impact; 4–6s Adam suddenly starts crying.
+
+فيديو 022 — S4-B — حوار
+
+· CHAR: MAZEN (muscular man, only a dark silhouette deep inside the darkness — voice hissing, face not visible).
+· LOC: Same dark kitchen entrance, deep shadows, faint cold fridge glow on the tile floor.
+· SHOT: Static low-angle shot, high contrast.
+· CAM: Static. A dark silhouette is barely visible in the black of the room; Mazen's voice hisses from the darkness. He does not move into the light.
+· DIALOGUE: مازن: «أنتِ ملكي. هل فهمتِ؟»
+· AUDIO: His hissing voice from the dark, fridge hum, Adam's crying in the distance. No music.
+· TIMING: 0–2s still darkness, silhouette barely visible; 2–5s he speaks; 5–6s silence and hum.
+
+فيديو 023 — S4-C — حركة
+
+· CHAR: SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — hand over her face, wide shocked eyes), MAZEN (muscular man in his early 30s, short black hair, dark work jacket — dark angry figure advancing).
+· LOC: The dark kitchen entrance and the living area beyond, moody shadows, high contrast.
+· SHOT: Static low-angle shot from the hallway, psychological thriller aesthetic.
+· CAM: Sara appears at the kitchen entrance with her hand over her face. Mazen steps toward her, angry, and his dark figure grows until it fills the frame. No contact or violence is shown.
+· DIALOGUE: —
+· AUDIO: Heavy footsteps on tile, fridge hum, Adam sobbing faintly, Sara's shaky breathing. No music.
+· TIMING: 0–2s Sara appears at the doorway, hand on her face; 2–6s Mazen advances and his figure grows; 6–8s his dark shape fills the frame.
+
+فيديو 024 — S4-D — تفصيلية
+
+· CHAR: يد سارة فقط (Sara's hand only — pale thin trembling hand, worn grey sleeve).
+· LOC: Edge of the kitchen counter in the dark, a knife handle at its edge, cold dim light.
+· SHOT: Extreme close-up of the hand, high contrast, very shallow depth of field.
+· CAM: Sara's trembling hand reaches backward searching for anything to stop him; her fingertips touch the handle of a knife. Static camera, nothing else is shown.
+· DIALOGUE: —
+· AUDIO: Her shaky breath, fridge hum, a fingertip scraping metal. No music.
+· TIMING: 0–2s hand reaches back, trembling; 2–4s fingertips find the cold edge; 4–6s fingers touch the handle.
+
+فيديو 025 — S4-E — حوار
+
+· CHAR: SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — broken, pleading).
+· LOC: Dark kitchen entrance, deep shadows, cold dim light on one side of her face.
+· SHOT: Close-up on Sara, high contrast, shallow depth of field.
+· CAM: Static. Her eyes are wet and her voice cracks as she begs, face lit from one side only.
+· DIALOGUE: سارة: «ابتعد عني... أرجوك.»
+· AUDIO: Her broken voice, fridge hum, a child's faint cry. No music.
+· TIMING: 0–2s trembling breath; 2–4s she speaks; 4–6s silence, eyes shut.
+
+فيديو 026 — S4-F — صوت فقط
+
+· CHAR: لا أحد ظاهر في الصورة (no person visible in the shot).
+· LOC: Static low-angle shot from the hallway into the dark kitchen, tile floor catching a faint cold glint, nobody visible.
+· SHOT: Static, psychological thriller aesthetic, high contrast.
+· CAM: Completely static. A moment of silence. Then a short cry off-screen and a metallic sound falling onto tile. All sounds stop at once, leaving only the fridge hum and Layan crying from another room.
+· DIALOGUE: —
+· AUDIO: One beat of silence, a short off-screen cry, metallic object clattering on tile, then total silence except fridge hum and Layan's distant crying.
+· TIMING: 0–2s silence; 2–3s short cry; 3–4s metallic clatter on the tile; 4–8s everything stops, only fridge hum and distant crying.
+
+فيديو 027 — S4-G — ردّ فعل
+
+· CHAR: SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes — eyes widening in shock).
+· LOC: Dark kitchen entrance, cold dim light on her eyes.
+· SHOT: Extreme close-up on Sara's eyes.
+· CAM: Static. Her eyes slowly widen as the silence settles; no face movement beyond the eyes.
+· DIALOGUE: —
+· AUDIO: Fridge hum only, Layan crying faintly far away. No music.
+· TIMING: 0–2s still eyes; 2–4s they widen slowly.
+
+فيديو 028 — S4-H — تفصيلية
+
+· CHAR: يد سارة المرتجفة فقط (only Sara's trembling hand at the edge of the frame).
+· LOC: Kitchen tile floor in the dark, a metallic knife lying on the tiles, a still shadow at the far edge of the frame.
+· SHOT: Static low-angle shot at floor level, high contrast, photorealistic.
+· CAM: Completely static. We see only a trembling hand at the edge, the knife on the tile, and a still shadow that does not move.
+· DIALOGUE: —
+· AUDIO: Fridge hum, Layan crying faintly far away, Sara's shaky breath. No music.
+· TIMING: 0–2s knife on the tile; 2–4s hand trembles at the edge of the frame; 4–6s the shadow stays perfectly still.
+
+فيديو 029 — S4-I — حوار
+
+· CHAR: SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, dark circles under her eyes — whispering, voice breaking).
+· LOC: Dark kitchen entrance, deep shadows, faint cold light.
+· SHOT: Close-up on Sara, high contrast.
+· CAM: Static. She whispers his name in a broken voice and waits for an answer that does not come.
+· DIALOGUE: سارة: «مازن؟»
+· AUDIO: Her broken whisper, fridge hum, Layan crying in the distance. No music.
+· TIMING: 0–1s she holds her breath; 1–2s she whispers his name; 2–4s no answer, only hum.
+
+فيديو 030 — S4-J — ختام
+
+· CHAR: SARA (pale woman in her mid-20s, loose disheveled dark-brown hair, worn grey cotton homewear — approaching slowly, then recoiling).
+· LOC: Dark kitchen entrance, deep shadows, cold dim light, the tiled floor.
+· SHOT: Static low-angle medium shot from the hallway.
+· CAM: Static. There is no answer. Sara walks forward slowly, then recoils as if she hit an invisible wall. The source text ends mid-sentence here, so the clip ends on her recoil.
+· DIALOGUE: —
+· AUDIO: Slow footsteps on tile, fridge hum, Layan crying faintly, her breath catching. No music.
+· TIMING: 0–2s silence, she waits; 2–4s she steps forward slowly; 4–6s she recoils.
